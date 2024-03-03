@@ -19,11 +19,12 @@ position = Vector2(160, 176)
 script = null
 
 [node name="MyPlayer" parent="EntityContainer" instance=ExtResource("3_8oym4")]
+position = Vector2(64, 96)
 
 [node name="Cameras" type="Node2D" parent="."]
 
 [node name="OnPlayerCamera" type="Node2D" parent="Cameras"]
-position = Vector2(1.4013e-45, -32)
+position = Vector2(64, 64)
 script = ExtResource("5_d018c")
 priority_override = false
 priority = 5
@@ -47,7 +48,7 @@ tween_on_load = true
 inactive_update_mode = 0
 
 [node name="PhantomCamera2D2" type="Node2D" parent="Cameras"]
-position = Vector2(80, 88)
+position = Vector2(112, 136)
 script = ExtResource("5_d018c")
 priority_override = false
 priority = 4

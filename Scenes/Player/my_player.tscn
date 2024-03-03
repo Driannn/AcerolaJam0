@@ -140,3 +140,11 @@ libraries = {
 "": SubResource("AnimationLibrary_pgd4j")
 }
 autoplay = "idle"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -4
+offset_left = -465.0
+offset_top = -517.0
+offset_right = 489.0
+offset_bottom = 302.0
+color = Color(0.631373, 0.811765, 0.811765, 1)
