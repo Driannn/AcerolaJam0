@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://k7uj7aa54yyh"]
+
+[ext_resource type="PackedScene" uid="uid://wlj4gtu6tdi8" path="res://Scenes/Player/player_entity.tscn" id="1_1okhk"]
+[ext_resource type="PackedScene" uid="uid://crtloaofelnjj" path="res://Scenes/Levels/test_level.tscn" id="1_x4wb5"]
+[ext_resource type="PackedScene" uid="uid://bubsfc3tvkdsb" path="res://Scenes/Player/my_player.tscn" id="3_8oym4"]
+
+[node name="MainScene" type="Node2D"]
+
+[node name="LevelsContainer" type="Node2D" parent="."]
+
+[node name="TestLevel" parent="LevelsContainer" instance=ExtResource("1_x4wb5")]
+position = Vector2(0, 112)
+
+[node name="EntityContainer" type="Node2D" parent="."]
+
+[node name="PlayerEntity" parent="EntityContainer" instance=ExtResource("1_1okhk")]
+position = Vector2(160, 176)
+script = null
+
+[node name="MyPlayer" parent="EntityContainer" instance=ExtResource("3_8oym4")]

@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bubsfc3tvkdsb"]
+
+[ext_resource type="Texture2D" uid="uid://clh5e1uwbbtv0" path="res://Assets/Character/AnimationSheet_Character_byPenzilla.png" id="1_8w7mu"]
+[ext_resource type="Script" path="res://Scenes/Player/my_player.gd" id="1_ggs3h"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_flhek"]
+radius = 5.0
+height = 22.0
+
+[node name="MyPlayer" type="CharacterBody2D"]
+script = ExtResource("1_ggs3h")
+h_speed = 250.0
+jump_force = 275.0
+gravity_acceleration = 700.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_flhek")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -16)
+texture = ExtResource("1_8w7mu")
+hframes = 8
+vframes = 9
+
+[node name="Camera2D" type="Camera2D" parent="."]

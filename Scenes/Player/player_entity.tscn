@@ -1,6 +1,11 @@
-[gd_scene load_steps=45 format=3 uid="uid://wlj4gtu6tdi8"]
+[gd_scene load_steps=46 format=3 uid="uid://wlj4gtu6tdi8"]
 
+[ext_resource type="Script" path="res://Scenes/Player/player_entity.gd" id="1_82uoy"]
 [ext_resource type="Texture2D" uid="uid://clh5e1uwbbtv0" path="res://Assets/Character/AnimationSheet_Character_byPenzilla.png" id="1_k7ddt"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_h6egl"]
+radius = 4.0
+height = 24.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dg36e"]
 atlas = ExtResource("1_k7ddt")
@@ -327,14 +332,16 @@ animations = [{
 "speed": 6.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fxqcj"]
-
 [node name="PlayerEntity" type="CharacterBody2D"]
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_2uw5e")
-animation = &"idle"
-frame_progress = 0.361331
+script = ExtResource("1_82uoy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_fxqcj")
+position = Vector2(0, -13)
+shape = SubResource("CapsuleShape2D_h6egl")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -16)
+sprite_frames = SubResource("SpriteFrames_2uw5e")
+animation = &"attack"
+frame = 2
+frame_progress = 0.999771
