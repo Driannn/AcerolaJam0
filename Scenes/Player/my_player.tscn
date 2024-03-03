@@ -1,14 +1,118 @@
-[gd_scene load_steps=4 format=3 uid="uid://bubsfc3tvkdsb"]
+[gd_scene load_steps=11 format=3 uid="uid://bubsfc3tvkdsb"]
 
 [ext_resource type="Texture2D" uid="uid://clh5e1uwbbtv0" path="res://Assets/Character/AnimationSheet_Character_byPenzilla.png" id="1_8w7mu"]
 [ext_resource type="Script" path="res://Scenes/Player/my_player.gd" id="1_ggs3h"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_a8wne"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_flhek"]
 radius = 5.0
 height = 22.0
 
+[sub_resource type="Animation" id="Animation_ujvcn"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 8]
+}
+
+[sub_resource type="Animation" id="Animation_jukvn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 6)]
+}
+
+[sub_resource type="Animation" id="Animation_6y8ty"]
+resource_name = "run"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [24, 25, 26, 27, 28, 29, 30, 31]
+}
+
+[sub_resource type="Animation" id="Animation_dwgku"]
+resource_name = "jump"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 1.1, 1.2, 1.3, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 5), Vector2i(1, 5), Vector2i(2, 5), Vector2i(3, 5), Vector2i(4, 5), Vector2i(5, 5), Vector2i(6, 5), Vector2i(7, 5)]
+}
+
+[sub_resource type="Animation" id="Animation_llf4s"]
+resource_name = "fall"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 1.2, 1.3, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(4, 5), Vector2i(5, 5), Vector2i(6, 5), Vector2i(7, 5), Vector2i(0, 5), Vector2i(1, 5), Vector2i(2, 5), Vector2i(3, 5)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pgd4j"]
+_data = {
+"RESET": SubResource("Animation_jukvn"),
+"fall": SubResource("Animation_llf4s"),
+"idle": SubResource("Animation_ujvcn"),
+"jump": SubResource("Animation_dwgku"),
+"run": SubResource("Animation_6y8ty")
+}
+
 [node name="MyPlayer" type="CharacterBody2D"]
 script = ExtResource("1_ggs3h")
+h_speed = 150.0
 jump_force = 275.0
 gravity_acceleration = 700.0
 
@@ -17,9 +121,22 @@ position = Vector2(0, -15)
 shape = SubResource("CapsuleShape2D_flhek")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
 position = Vector2(0, -16)
 texture = ExtResource("1_8w7mu")
 hframes = 8
 vframes = 9
+frame = 48
 
 [node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -48)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D"]
+script = ExtResource("3_a8wne")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_pgd4j")
+}
+autoplay = "idle"

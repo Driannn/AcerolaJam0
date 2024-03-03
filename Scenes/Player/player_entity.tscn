@@ -343,5 +343,4 @@ shape = SubResource("CapsuleShape2D_h6egl")
 position = Vector2(0, -16)
 sprite_frames = SubResource("SpriteFrames_2uw5e")
 animation = &"attack"
-frame = 2
-frame_progress = 0.999771
+autoplay = "attack"
