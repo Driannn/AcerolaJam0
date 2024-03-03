@@ -49,12 +49,11 @@ func _physics_process(delta):
 	move_on_x(delta)
 	jump()
 	move_and_slide()
-	print (jump_count)
 
 ##Get players input and apply it to the X velocity
 func move_on_x(delta : float) -> void:
 	var horizontal_direction = Input.get_axis("move_left", "move_right")
-	velocity.x = h_speed * horizontal_direction
+	velocity.x = h_speed * horizontal_direction * delta * 50
 
 ##Apply force to the Y velocity if the player is not on the floor
 func apply_gravity(delta : float) -> void:
@@ -69,6 +68,7 @@ func jump() -> void:
 	if Input.is_action_just_pressed("jump") && jump_count < 1:
 		velocity.y = -jump_force
 		jump_count += 1
+		print (jump_count)
 	
 	if is_on_floor():
 		jump_count = 0
