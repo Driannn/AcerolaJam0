@@ -6,24 +6,7 @@
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_flhek"]
 radius = 5.0
-height = 22.0
-
-[sub_resource type="Animation" id="Animation_ujvcn"]
-resource_name = "idle"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [0, 8]
-}
+height = 26.0
 
 [sub_resource type="Animation" id="Animation_jukvn"]
 length = 0.001
@@ -52,9 +35,25 @@ tracks/1/keys = {
 "values": [Vector2i(0, 6)]
 }
 
-[sub_resource type="Animation" id="Animation_6y8ty"]
-resource_name = "run"
-length = 0.8
+[sub_resource type="Animation" id="Animation_llf4s"]
+resource_name = "fall"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 1.2, 1.3, 1.4, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(4, 5), Vector2i(5, 5), Vector2i(6, 5), Vector2i(7, 5), Vector2i(0, 5), Vector2i(1, 5), Vector2i(2, 5), Vector2i(3, 5)]
+}
+
+[sub_resource type="Animation" id="Animation_ujvcn"]
+resource_name = "idle"
+length = 2.0
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -63,10 +62,10 @@ tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.6),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [24, 25, 26, 27, 28, 29, 30, 31]
+"values": [0, 8]
 }
 
 [sub_resource type="Animation" id="Animation_dwgku"]
@@ -85,20 +84,21 @@ tracks/0/keys = {
 "values": [Vector2i(0, 5), Vector2i(1, 5), Vector2i(2, 5), Vector2i(3, 5), Vector2i(4, 5), Vector2i(5, 5), Vector2i(6, 5), Vector2i(7, 5)]
 }
 
-[sub_resource type="Animation" id="Animation_llf4s"]
-resource_name = "fall"
-length = 0.4
+[sub_resource type="Animation" id="Animation_6y8ty"]
+resource_name = "run"
+length = 0.8
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/path = NodePath("Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 1.2, 1.3, 1.4, 1.5),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [Vector2i(4, 5), Vector2i(5, 5), Vector2i(6, 5), Vector2i(7, 5), Vector2i(0, 5), Vector2i(1, 5), Vector2i(2, 5), Vector2i(3, 5)]
+"values": [24, 25, 26, 27, 28, 29, 30, 31]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pgd4j"]
@@ -114,11 +114,7 @@ _data = {
 script = ExtResource("1_ggs3h")
 h_speed = 150.0
 jump_force = 275.0
-gravity_acceleration = 700.0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -15)
-shape = SubResource("CapsuleShape2D_flhek")
+gravity_acceleration = 800.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
@@ -127,6 +123,10 @@ texture = ExtResource("1_8w7mu")
 hframes = 8
 vframes = 9
 frame = 48
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -14)
+shape = SubResource("CapsuleShape2D_flhek")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(0, -48)
@@ -140,11 +140,3 @@ libraries = {
 "": SubResource("AnimationLibrary_pgd4j")
 }
 autoplay = "idle"
-
-[node name="ColorRect" type="ColorRect" parent="."]
-z_index = -4
-offset_left = -465.0
-offset_top = -517.0
-offset_right = 489.0
-offset_bottom = 302.0
-color = Color(0.631373, 0.811765, 0.811765, 1)
