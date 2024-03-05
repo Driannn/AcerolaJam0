@@ -115,6 +115,7 @@ script = ExtResource("1_ggs3h")
 h_speed = 150.0
 jump_force = 275.0
 gravity_acceleration = 800.0
+gravity_max_speed = 700.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
