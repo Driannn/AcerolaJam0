@@ -10,7 +10,7 @@
 [node name="LevelsContainer" type="Node2D" parent="."]
 
 [node name="TestLevel" parent="LevelsContainer" instance=ExtResource("1_x4wb5")]
-position = Vector2(0, 112)
+position = Vector2(0, 192)
 
 [node name="EntityContainer" type="Node2D" parent="."]
 
@@ -19,21 +19,21 @@ position = Vector2(160, 176)
 script = null
 
 [node name="MyPlayer" parent="EntityContainer" instance=ExtResource("3_8oym4")]
-position = Vector2(64, 96)
+position = Vector2(96, 160)
 
 [node name="Cameras" type="Node2D" parent="."]
 
 [node name="OnPlayerCamera" type="Node2D" parent="Cameras"]
-position = Vector2(64, 64)
+position = Vector2(102.035, 128)
 script = ExtResource("5_d018c")
 priority_override = false
 priority = 5
 zoom = Vector2(1, 1)
 follow_mode = 2
 follow_target = NodePath("../../EntityContainer/MyPlayer")
-follow_parameters/target_offset = Vector2(0, -32)
+follow_parameters/target_offset = Vector2(6.035, -32)
 follow_parameters/damping = true
-follow_parameters/damping_value = 3.0
+follow_parameters/damping_value = 8.0
 frame_preview = true
 pixel_perfect = false
 limit/draw_limits = true
@@ -48,7 +48,7 @@ tween_on_load = true
 inactive_update_mode = 0
 
 [node name="PhantomCamera2D2" type="Node2D" parent="Cameras"]
-position = Vector2(112, 136)
+position = Vector2(128, 168)
 script = ExtResource("5_d018c")
 priority_override = false
 priority = 4
