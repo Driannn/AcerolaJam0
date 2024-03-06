@@ -78,7 +78,7 @@ func apply_gravity(delta : float) -> void:
 	if !is_on_floor() && velocity.y < gravity_max_speed:
 		velocity.y += gravity_acceleration * delta
 
-##Check if it is possible to jump and handle the jump count
+##Check if it is possible to jump and returns a bool, resent the jump count on floor
 func handle_jump() -> bool:
 	if is_on_floor():
 		jump_count = 0
