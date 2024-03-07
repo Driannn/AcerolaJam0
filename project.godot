@@ -13,7 +13,10 @@ config_version=5
 config/name="Acerola Jam 0"
 run/main_scene="res://Scenes/Main scene/main_scene.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
+boot_splash/bg_color=Color(0.0745098, 0.0745098, 0.0745098, 1)
+boot_splash/image="res://Godot splash Screen.png"
 config/icon="res://icon.svg"
+boot_splash/minimum_display_time=3000
 
 [display]
 
