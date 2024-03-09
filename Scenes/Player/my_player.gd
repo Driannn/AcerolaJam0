@@ -25,6 +25,8 @@ extends CharacterBody2D
 @onready var ap = %AnimationPlayer
 ##Reference to the Sprite2D player node
 @onready var sprite = %Sprite2D
+##Reference to the sword node
+@onready var sword = %WeaponSword
 #endregion
 
 #region normal variables
@@ -70,6 +72,13 @@ func sprite_flip(horizontal_direction):
 	if horizontal_direction != 0:
 		#flip the sprite if the direction is left and go back to normal if direction is right
 		sprite.flip_h = horizontal_direction == -1
+		flip_sword()
+		
+func flip_sword():
+	if sprite.flip_h:
+		sword.scale.x = -1
+	else:
+		sword.scale.x = 1
 
 ##Apply force to the Y velocity if the player is not on the floor
 func apply_gravity(delta : float) -> void:
@@ -78,7 +87,7 @@ func apply_gravity(delta : float) -> void:
 	if !is_on_floor() && velocity.y < gravity_max_speed:
 		velocity.y += gravity_acceleration * delta
 
-##Check if it is possible to jump and handle the jump count
+##Check if it is possible to jump and returns a bool, resent the jump count on floor
 func handle_jump() -> bool:
 	if is_on_floor():
 		jump_count = 0

@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://bubsfc3tvkdsb"]
+[gd_scene load_steps=12 format=3 uid="uid://bubsfc3tvkdsb"]
 
 [ext_resource type="Texture2D" uid="uid://clh5e1uwbbtv0" path="res://Assets/Character/AnimationSheet_Character_byPenzilla.png" id="1_8w7mu"]
 [ext_resource type="Script" path="res://Scenes/Player/my_player.gd" id="1_ggs3h"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_a8wne"]
+[ext_resource type="PackedScene" uid="uid://3rebuh30qoem" path="res://Scenes/Items/weapon_sword.tscn" id="4_kf80v"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_flhek"]
 radius = 5.0
@@ -141,3 +142,7 @@ libraries = {
 "": SubResource("AnimationLibrary_pgd4j")
 }
 autoplay = "idle"
+
+[node name="WeaponSword" parent="." instance=ExtResource("4_kf80v")]
+unique_name_in_owner = true
+position = Vector2(-2, -19)
