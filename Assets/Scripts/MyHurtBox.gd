@@ -18,4 +18,6 @@ func _on_area_entered(hitbox: MyHitBox) -> void:
 	if hitbox == null:
 		return
 	
-	
+	#Owner here is enemy node
+	if owner.has_method("take_damage"):
+		owner.take_damage(hitbox.damage)
