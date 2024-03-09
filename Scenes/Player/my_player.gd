@@ -123,7 +123,7 @@ func update_animations(horizontal_direction : float) -> void:
 func take_damage(value):
 	ap.play("hurt")
 	health -= value
-	print("ayay me duele csm... health: ", health)
+	print("Player take damage. health: ", health)
 	
 	
 	
