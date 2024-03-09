@@ -12,6 +12,8 @@ extends CharacterBody2D
 @export var jump_force : float = 200.0
 ##Determines the maximun of jumps the player can do
 @export var max_jumps : int = 2
+##Player Health
+@export var health := 100
 
 @export_category("World")
 ##Gravity acceleration
@@ -27,6 +29,11 @@ extends CharacterBody2D
 @onready var sprite = %Sprite2D
 ##Reference to the sword node
 @onready var sword = %WeaponSword
+##Reference to health bar
+@onready var health_bar = %HeathBar
+##Timer for hurt animation
+@onready var hurt_anim = $HurtAnim
+
 #endregion
 
 #region normal variables
@@ -35,6 +42,9 @@ var jump_count : int = 0
 #endregion
 
 #NATIVE GODOT FUNCTIONS
+
+func _ready():
+	health_bar.init_health(health)
 
 func _physics_process(delta):
 	
@@ -103,6 +113,10 @@ func jump():
 
 ##Handle the chages between animation states
 func update_animations(horizontal_direction : float) -> void:
+	
+	if !hurt_anim.is_stopped():
+		return
+	
 	if is_on_floor():
 		if horizontal_direction == 0:
 			ap.play("idle")
@@ -112,3 +126,19 @@ func update_animations(horizontal_direction : float) -> void:
 		ap.play("jump")
 	elif velocity.y > 0:
 		ap.play("fall")
+
+func take_damage(amount: int) -> void:
+	ap.play("hurt")
+	ap.queue("idle")
+	hurt_anim.start()
+	set_health(amount)
+	health -= amount
+	print("Player take damage. health: ", health)
+
+func set_health(value):
+	health_bar.health -= value
+
+
+func _on_timer_timeout():
+	update_animations(get_movement_input())
+	pass # Replace with function body.

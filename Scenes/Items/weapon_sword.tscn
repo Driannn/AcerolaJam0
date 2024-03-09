@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scenes/Items/weapon_sword.gd" id="1_ex3v8"]
 [ext_resource type="Texture2D" uid="uid://bq3d5hoyv63xt" path="res://Assets/Items/Sword_01.png" id="1_p2esc"]
-[ext_resource type="Script" path="res://Assets/Scripts/MyHitBox.gd" id="2_065w3"]
 [ext_resource type="Script" path="res://Scenes/Items/SwordTrail.gd" id="4_dm5yi"]
+[ext_resource type="Script" path="res://Scenes/Items/SwordHitBox.gd" id="4_w7csv"]
 
 [sub_resource type="Curve" id="Curve_1h4us"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.577601, 0.0, 0, 0]
@@ -14,8 +14,8 @@ offsets = PackedFloat32Array(0, 0.540773, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ydxh1"]
-radius = 3.47112
-height = 28.4177
+radius = 2.06104
+height = 26.8995
 
 [sub_resource type="Animation" id="Animation_4qfoc"]
 length = 0.001
@@ -87,7 +87,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_qf01p"]
 resource_name = "slash"
-length = 0.2
+length = 0.15
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -95,10 +95,10 @@ tracks/0/path = NodePath("Node2D:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1.51572),
+"times": PackedFloat32Array(0, 0.15),
+"transitions": PackedFloat32Array(0.34151, 0.34151),
 "update": 0,
-"values": [-0.502655, 2.47837]
+"values": [-0.502655, 1.89194]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -107,7 +107,7 @@ tracks/1/path = NodePath("Node2D/Sprite2D/MyHitBox/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
+"times": PackedFloat32Array(0, 0.15),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -156,10 +156,12 @@ script = ExtResource("4_dm5yi")
 max_lenght = 7
 
 [node name="MyHitBox" type="Area2D" parent="Node2D/Sprite2D"]
-script = ExtResource("2_065w3")
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("4_w7csv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Sprite2D/MyHitBox"]
-position = Vector2(1, -1)
+position = Vector2(2, -2)
 rotation = 0.708861
 shape = SubResource("CapsuleShape2D_ydxh1")
 disabled = true
