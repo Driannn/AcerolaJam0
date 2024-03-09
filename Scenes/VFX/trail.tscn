@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://hwklcsynp652"]
+
+[ext_resource type="Script" path="res://Trail.gd" id="1_nnggr"]
+
+[sub_resource type="Curve" id="Curve_yfsmf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_fuooo"]
+colors = PackedColorArray(0.741176, 0.027451, 0.0980392, 1, 0, 1, 1, 1)
+
+[node name="Trail" type="Line2D"]
+width = 20.0
+width_curve = SubResource("Curve_yfsmf")
+gradient = SubResource("Gradient_fuooo")
+script = ExtResource("1_nnggr")
