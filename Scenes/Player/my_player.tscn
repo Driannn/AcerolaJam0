@@ -1,14 +1,23 @@
-[gd_scene load_steps=15 format=3 uid="uid://bubsfc3tvkdsb"]
+[gd_scene load_steps=20 format=3 uid="uid://bubsfc3tvkdsb"]
 
 [ext_resource type="Texture2D" uid="uid://clh5e1uwbbtv0" path="res://Assets/Character/AnimationSheet_Character_byPenzilla.png" id="1_8w7mu"]
 [ext_resource type="Script" path="res://Scenes/Player/my_player.gd" id="1_ggs3h"]
+[ext_resource type="Script" path="res://Scenes/Player/PlayerHurtBox.gd" id="3_3swkq"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_a8wne"]
+[ext_resource type="PackedScene" uid="uid://4far1tugdhd" path="res://Scenes/UI/heath_bar.tscn" id="4_2c6ax"]
 [ext_resource type="PackedScene" uid="uid://3rebuh30qoem" path="res://Scenes/Items/weapon_sword.tscn" id="4_kf80v"]
 [ext_resource type="Script" path="res://Scenes/Player/ObjectTrail.gd" id="5_p5b07"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_meodc"]
+radius = 5.0
+height = 24.0
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_flhek"]
 radius = 5.0
 height = 26.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aeibh"]
+bg_color = Color(0, 0.721569, 0.337255, 1)
 
 [sub_resource type="Animation" id="Animation_jukvn"]
 length = 0.001
@@ -36,6 +45,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [Vector2i(0, 6)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_llf4s"]
 resource_name = "fall"
@@ -53,6 +74,23 @@ tracks/0/keys = {
 "values": [Vector2i(4, 5), Vector2i(5, 5), Vector2i(6, 5), Vector2i(7, 5), Vector2i(0, 5), Vector2i(1, 5), Vector2i(2, 5), Vector2i(3, 5)]
 }
 
+[sub_resource type="Animation" id="Animation_6s7v0"]
+resource_name = "hurt"
+length = 0.1
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Color(26.857, 21.714, 24.572, 1), Color(1, 1, 1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_ujvcn"]
 resource_name = "idle"
 length = 2.0
@@ -68,6 +106,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 8]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_dwgku"]
@@ -89,7 +139,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_6y8ty"]
 resource_name = "run"
 length = 0.8
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -107,6 +156,7 @@ tracks/0/keys = {
 _data = {
 "RESET": SubResource("Animation_jukvn"),
 "fall": SubResource("Animation_llf4s"),
+"hurt": SubResource("Animation_6s7v0"),
 "idle": SubResource("Animation_ujvcn"),
 "jump": SubResource("Animation_dwgku"),
 "run": SubResource("Animation_6y8ty")
@@ -125,6 +175,7 @@ colors = PackedColorArray(0.741176, 0.027451, 0.0980392, 1, 0, 1, 1, 1)
 script = ExtResource("1_ggs3h")
 h_speed = 150.0
 jump_force = 275.0
+health = 50
 gravity_acceleration = 800.0
 gravity_max_speed = 700.0
 
@@ -136,6 +187,16 @@ hframes = 8
 vframes = 9
 frame = 48
 
+[node name="MyHurtBox" type="Area2D" parent="Sprite2D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("3_3swkq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/MyHurtBox"]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_meodc")
+debug_color = Color(0.831373, 0, 0.945098, 0.419608)
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -14)
 shape = SubResource("CapsuleShape2D_flhek")
@@ -145,6 +206,16 @@ position = Vector2(0, -48)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("3_a8wne")
+
+[node name="HeathBar" parent="Camera2D" instance=ExtResource("4_2c6ax")]
+unique_name_in_owner = true
+offset_left = -207.0
+offset_top = 33.0
+offset_right = 94.0
+offset_bottom = 45.0
+rotation = -1.5708
+scale = Vector2(0.158147, 0.494211)
+theme_override_styles/fill = SubResource("StyleBoxFlat_aeibh")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -166,3 +237,9 @@ gradient = SubResource("Gradient_l3qge")
 script = ExtResource("5_p5b07")
 max_lenght = 12
 position_offset = Vector2(0, -12)
+
+[node name="HurtAnim" type="Timer" parent="."]
+wait_time = 0.389
+one_shot = true
+
+[connection signal="timeout" from="HurtAnim" to="." method="_on_timer_timeout"]

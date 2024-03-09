@@ -96,7 +96,8 @@ attack={
 [layer_names]
 
 2d_physics/layer_1="gameworld"
-2d_physics/layer_2="hitboxes"
+2d_physics/layer_2="hitboxes enemies"
+2d_physics/layer_3="hitbox player"
 
 [rendering]
 
