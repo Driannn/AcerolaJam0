@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cldxd32efc4gh"]
+[gd_scene load_steps=10 format=3 uid="uid://cldxd32efc4gh"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/eye_enemy.gd" id="1_2ixle"]
 [ext_resource type="Texture2D" uid="uid://y5nofrxknf74" path="res://Assets/Character/Eye try 2 test.png" id="1_7xmje"]
 [ext_resource type="Script" path="res://Assets/Scripts/MyHurtBox.gd" id="2_83kp3"]
+[ext_resource type="PackedScene" uid="uid://4far1tugdhd" path="res://Scenes/UI/heath_bar.tscn" id="4_qwtri"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p13l0"]
 radius = 41.0488
@@ -107,3 +108,11 @@ libraries = {
 "": SubResource("AnimationLibrary_blspn")
 }
 autoplay = "idle"
+
+[node name="HeathBar" parent="." instance=ExtResource("4_qwtri")]
+unique_name_in_owner = true
+offset_left = -13.0
+offset_top = -38.0
+offset_right = 221.0
+offset_bottom = -30.0
+scale = Vector2(0.128285, 0.261161)

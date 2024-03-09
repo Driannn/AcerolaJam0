@@ -1,7 +1,7 @@
 class_name MyHitBox
 extends Area2D
 
-@export var damage := 10
+@export var damage := 25
 
 func _init() -> void:
 	#Set the layer of this hit box to the number 2

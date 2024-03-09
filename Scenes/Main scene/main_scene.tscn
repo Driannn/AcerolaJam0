@@ -54,14 +54,6 @@ position = Vector2(680, 152)
 [node name="EyeEnemy2" parent="EntityContainer/Enemies" instance=ExtResource("7_rwyoi")]
 position = Vector2(832, 157)
 
-[node name="EyeEnemy3" parent="EntityContainer/Enemies" instance=ExtResource("7_rwyoi")]
-position = Vector2(247, 133)
-scale = Vector2(0.199999, 0.199999)
-
-[node name="EyeEnemy5" parent="EntityContainer/Enemies" instance=ExtResource("7_rwyoi")]
-position = Vector2(376, 126)
-scale = Vector2(0.246765, 0.274661)
-
 [node name="EyeEnemy4" parent="EntityContainer/Enemies" instance=ExtResource("7_rwyoi")]
 position = Vector2(-30, 207)
 

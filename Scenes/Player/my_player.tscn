@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://bubsfc3tvkdsb"]
+[gd_scene load_steps=16 format=3 uid="uid://bubsfc3tvkdsb"]
 
 [ext_resource type="Texture2D" uid="uid://clh5e1uwbbtv0" path="res://Assets/Character/AnimationSheet_Character_byPenzilla.png" id="1_8w7mu"]
 [ext_resource type="Script" path="res://Scenes/Player/my_player.gd" id="1_ggs3h"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_a8wne"]
+[ext_resource type="PackedScene" uid="uid://4far1tugdhd" path="res://Scenes/UI/heath_bar.tscn" id="4_2c6ax"]
 [ext_resource type="PackedScene" uid="uid://3rebuh30qoem" path="res://Scenes/Items/weapon_sword.tscn" id="4_kf80v"]
 [ext_resource type="Script" path="res://Scenes/Player/ObjectTrail.gd" id="5_p5b07"]
 
@@ -145,6 +146,14 @@ position = Vector2(0, -48)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("3_a8wne")
+
+[node name="HeathBar" parent="Camera2D" instance=ExtResource("4_2c6ax")]
+offset_left = -207.0
+offset_top = 33.0
+offset_right = 38.0
+offset_bottom = 48.0
+rotation = -1.5708
+scale = Vector2(0.158147, 0.494211)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
