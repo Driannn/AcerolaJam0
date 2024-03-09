@@ -12,6 +12,8 @@ extends CharacterBody2D
 @export var jump_force : float = 200.0
 ##Determines the maximun of jumps the player can do
 @export var max_jumps : int = 2
+##Player Health
+@export var health := 100
 
 @export_category("World")
 ##Gravity acceleration
@@ -103,6 +105,11 @@ func jump():
 
 ##Handle the chages between animation states
 func update_animations(horizontal_direction : float) -> void:
+	
+	if ap.is_playing() and ap.current_animation == "hurt":
+		ap.queue("hurt")
+		ap.queue("idle")
+	
 	if is_on_floor():
 		if horizontal_direction == 0:
 			ap.play("idle")
@@ -112,3 +119,13 @@ func update_animations(horizontal_direction : float) -> void:
 		ap.play("jump")
 	elif velocity.y > 0:
 		ap.play("fall")
+
+func take_damage(value):
+	ap.play("hurt")
+	health -= value
+	print("ayay me duele csm... health: ", health)
+	
+	
+	
+	
+	
