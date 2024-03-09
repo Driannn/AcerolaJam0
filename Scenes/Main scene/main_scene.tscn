@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://k7uj7aa54yyh"]
+[gd_scene load_steps=11 format=3 uid="uid://k7uj7aa54yyh"]
 
 [ext_resource type="PackedScene" uid="uid://wlj4gtu6tdi8" path="res://Scenes/Player/player_entity.tscn" id="1_1okhk"]
+[ext_resource type="Script" path="res://Scenes/Main scene/GameManager.gd" id="1_dq8ga"]
 [ext_resource type="PackedScene" uid="uid://cprdctgkrpvbo" path="res://Scenes/VFX/SnowGeneratorCPU.tscn" id="2_0g361"]
 [ext_resource type="PackedScene" uid="uid://db4ivmgtxggnu" path="res://Scenes/TileMaps/my_tile_map1.tscn" id="2_b388d"]
 [ext_resource type="PackedScene" uid="uid://bubsfc3tvkdsb" path="res://Scenes/Player/my_player.tscn" id="3_8oym4"]
@@ -12,6 +13,11 @@
 
 [node name="MainScene" type="Node2D"]
 
+[node name="Manager Container" type="Node" parent="."]
+
+[node name="GameManager" type="Node" parent="Manager Container"]
+script = ExtResource("1_dq8ga")
+
 [node name="LevelsContainer" type="Node2D" parent="."]
 
 [node name="MyTileMap" parent="LevelsContainer" instance=ExtResource("2_b388d")]
@@ -19,11 +25,8 @@ layer_0/tile_data = PackedInt32Array(786452, 65537, 2, 917523, 131073, 1, 851987
 
 [node name="EntityContainer" type="Node2D" parent="."]
 
-[node name="PlayerEntity" parent="EntityContainer" instance=ExtResource("1_1okhk")]
-position = Vector2(160, 176)
-script = null
-
 [node name="MyPlayer" parent="EntityContainer" instance=ExtResource("3_8oym4")]
+unique_name_in_owner = true
 position = Vector2(96, 160)
 
 [node name="SKETCHING UP" type="Sprite2D" parent="EntityContainer"]
@@ -45,6 +48,10 @@ texture = ExtResource("5_v7brh")
 [node name="Sword02" type="Sprite2D" parent="EntityContainer/SKETCHING UP"]
 position = Vector2(9, -2)
 texture = ExtResource("8_hmrcu")
+
+[node name="PlayerEntity" parent="EntityContainer/SKETCHING UP" instance=ExtResource("1_1okhk")]
+position = Vector2(-48, -19)
+script = null
 
 [node name="Enemies" type="Node2D" parent="EntityContainer"]
 
@@ -88,28 +95,3 @@ position = Vector2(124.965, -128)
 lifetime = 15.0
 speed_scale = 1.05
 emission_rect_extents = Vector2(512, 1)
-
-[node name="PhantomCamera2D2" type="Node2D" parent="Cameras"]
-position = Vector2(128, 168)
-script = ExtResource("5_d018c")
-priority_override = false
-priority = 4
-zoom = Vector2(0.45, 0.45)
-follow_mode = 3
-follow_group = Array[NodePath]([NodePath("../../EntityContainer/MyPlayer"), NodePath("../../EntityContainer/PlayerEntity")])
-follow_parameters/auto_zoom = false
-follow_parameters/target_offset = Vector2(0, -32)
-follow_parameters/damping = true
-follow_parameters/damping_value = 3.0
-frame_preview = true
-pixel_perfect = false
-limit/draw_limits = true
-limit/left = -10000000
-limit/top = -10000000
-limit/right = 10000000
-limit/bottom = 10000000
-limit/limit_node_target = NodePath("")
-limit/smoothed = false
-tween_parameters = null
-tween_on_load = true
-inactive_update_mode = 0
