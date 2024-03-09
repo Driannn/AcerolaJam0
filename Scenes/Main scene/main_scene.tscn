@@ -88,7 +88,7 @@ position = Vector2(124.965, -128)
 lifetime = 15.0
 speed_scale = 1.05
 emission_rect_extents = Vector2(512, 1)
-color = Color(0.560784, 0.85098, 0.952941, 1)
+color = Color(0.964706, 0.698039, 0.933333, 1)
 
 [node name="PhantomCamera2D2" type="Node2D" parent="Cameras"]
 position = Vector2(128, 168)

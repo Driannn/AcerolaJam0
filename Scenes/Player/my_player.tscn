@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bubsfc3tvkdsb"]
+[gd_scene load_steps=15 format=3 uid="uid://bubsfc3tvkdsb"]
 
 [ext_resource type="Texture2D" uid="uid://clh5e1uwbbtv0" path="res://Assets/Character/AnimationSheet_Character_byPenzilla.png" id="1_8w7mu"]
 [ext_resource type="Script" path="res://Scenes/Player/my_player.gd" id="1_ggs3h"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_a8wne"]
 [ext_resource type="PackedScene" uid="uid://3rebuh30qoem" path="res://Scenes/Items/weapon_sword.tscn" id="4_kf80v"]
+[ext_resource type="Script" path="res://Scenes/Player/ObjectTrail.gd" id="5_p5b07"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_flhek"]
 radius = 5.0
@@ -111,6 +112,15 @@ _data = {
 "run": SubResource("Animation_6y8ty")
 }
 
+[sub_resource type="Curve" id="Curve_ux24t"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.260073, 1), -0.144239, -0.144239, 0, 0, Vector2(1, 0.05), -1.2399, 0.0, 0, 0]
+point_count = 3
+metadata/_snap_enabled = true
+metadata/_snap_count = 20
+
+[sub_resource type="Gradient" id="Gradient_l3qge"]
+colors = PackedColorArray(0.741176, 0.027451, 0.0980392, 1, 0, 1, 1, 1)
+
 [node name="MyPlayer" type="CharacterBody2D"]
 script = ExtResource("1_ggs3h")
 h_speed = 150.0
@@ -146,3 +156,13 @@ autoplay = "idle"
 [node name="WeaponSword" parent="." instance=ExtResource("4_kf80v")]
 unique_name_in_owner = true
 position = Vector2(-2, -19)
+
+[node name="MyTrails" type="Line2D" parent="."]
+show_behind_parent = true
+top_level = true
+z_index = -1
+width_curve = SubResource("Curve_ux24t")
+gradient = SubResource("Gradient_l3qge")
+script = ExtResource("5_p5b07")
+max_lenght = 12
+position_offset = Vector2(0, -12)
