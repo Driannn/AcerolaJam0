@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scenes/Items/weapon_sword.gd" id="1_ex3v8"]
 [ext_resource type="Texture2D" uid="uid://bq3d5hoyv63xt" path="res://Assets/Items/Sword_01.png" id="1_p2esc"]
-[ext_resource type="Script" path="res://Assets/Scripts/MyHitBox.gd" id="2_065w3"]
 [ext_resource type="Script" path="res://Scenes/Items/SwordTrail.gd" id="4_dm5yi"]
+[ext_resource type="Script" path="res://Scenes/Items/SwordHitBox.gd" id="4_w7csv"]
 
 [sub_resource type="Curve" id="Curve_1h4us"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.577601, 0.0, 0, 0]
@@ -15,7 +15,7 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ydxh1"]
 radius = 2.06104
-height = 10.6071
+height = 26.8995
 
 [sub_resource type="Animation" id="Animation_4qfoc"]
 length = 0.001
@@ -156,10 +156,12 @@ script = ExtResource("4_dm5yi")
 max_lenght = 7
 
 [node name="MyHitBox" type="Area2D" parent="Node2D/Sprite2D"]
-script = ExtResource("2_065w3")
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("4_w7csv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Sprite2D/MyHitBox"]
-position = Vector2(6.0531, -5.36475)
+position = Vector2(2, -2)
 rotation = 0.708861
 shape = SubResource("CapsuleShape2D_ydxh1")
 disabled = true

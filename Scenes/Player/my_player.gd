@@ -29,6 +29,8 @@ extends CharacterBody2D
 @onready var sprite = %Sprite2D
 ##Reference to the sword node
 @onready var sword = %WeaponSword
+##Reference to health bar
+@onready var health_bar = %HeathBar
 #endregion
 
 #region normal variables
@@ -37,6 +39,9 @@ var jump_count : int = 0
 #endregion
 
 #NATIVE GODOT FUNCTIONS
+
+func _ready():
+	health_bar.init_health(health)
 
 func _physics_process(delta):
 	
@@ -106,9 +111,8 @@ func jump():
 ##Handle the chages between animation states
 func update_animations(horizontal_direction : float) -> void:
 	
-	if ap.is_playing() and ap.current_animation == "hurt":
-		ap.queue("hurt")
-		ap.queue("idle")
+	#if ap.is_playing() and ap.current_animation == "hurt":
+		#return
 	
 	if is_on_floor():
 		if horizontal_direction == 0:
@@ -120,12 +124,11 @@ func update_animations(horizontal_direction : float) -> void:
 	elif velocity.y > 0:
 		ap.play("fall")
 
-func take_damage(value):
+func take_damage(amount: int) -> void:
 	ap.play("hurt")
-	health -= value
+	ap.queue("idle")
+	set_health(amount)
 	print("Player take damage. health: ", health)
-	
-	
-	
-	
-	
+
+func set_health(value):
+	health_bar.health -= value

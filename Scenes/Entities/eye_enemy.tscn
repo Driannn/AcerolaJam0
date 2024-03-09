@@ -2,15 +2,15 @@
 
 [ext_resource type="Script" path="res://Scenes/Entities/eye_enemy.gd" id="1_2ixle"]
 [ext_resource type="Texture2D" uid="uid://y5nofrxknf74" path="res://Assets/Character/Eye try 2 test.png" id="1_7xmje"]
-[ext_resource type="Script" path="res://Assets/Scripts/MyHurtBox.gd" id="2_83kp3"]
-[ext_resource type="Script" path="res://Assets/Scripts/MyHitBox.gd" id="4_6yace"]
+[ext_resource type="Script" path="res://Scenes/Entities/EnemyHurtBox.gd" id="3_xf7gy"]
+[ext_resource type="Script" path="res://Scenes/Entities/EnemyHitBox.gd" id="4_o33od"]
 [ext_resource type="PackedScene" uid="uid://4far1tugdhd" path="res://Scenes/UI/heath_bar.tscn" id="4_qwtri"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p13l0"]
 radius = 41.0488
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_1ty1u"]
-radius = 27.0185
+radius = 28.0
 
 [sub_resource type="Animation" id="Animation_y1ou2"]
 length = 0.001
@@ -101,14 +101,20 @@ rotation = 6.28319
 texture = ExtResource("1_7xmje")
 
 [node name="MyHurtBox" type="Area2D" parent="Sprite2D"]
-script = ExtResource("2_83kp3")
+visible = false
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("3_xf7gy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/MyHurtBox"]
 position = Vector2(1, -4)
 shape = SubResource("CircleShape2D_p13l0")
 
 [node name="MyHitBox" type="Area2D" parent="Sprite2D"]
-script = ExtResource("4_6yace")
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("4_o33od")
+damage = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/MyHitBox"]
 position = Vector2(1.99998, -4.00001)
