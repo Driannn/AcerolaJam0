@@ -31,6 +31,9 @@ extends CharacterBody2D
 @onready var sword = %WeaponSword
 ##Reference to health bar
 @onready var health_bar = %HeathBar
+##Timer for hurt animation
+@onready var hurt_anim = $HurtAnim
+
 #endregion
 
 #region normal variables
@@ -111,8 +114,8 @@ func jump():
 ##Handle the chages between animation states
 func update_animations(horizontal_direction : float) -> void:
 	
-	#if ap.is_playing() and ap.current_animation == "hurt":
-		#return
+	if !hurt_anim.is_stopped():
+		return
 	
 	if is_on_floor():
 		if horizontal_direction == 0:
@@ -127,8 +130,15 @@ func update_animations(horizontal_direction : float) -> void:
 func take_damage(amount: int) -> void:
 	ap.play("hurt")
 	ap.queue("idle")
+	hurt_anim.start()
 	set_health(amount)
+	health -= amount
 	print("Player take damage. health: ", health)
 
 func set_health(value):
 	health_bar.health -= value
+
+
+func _on_timer_timeout():
+	update_animations(get_movement_input())
+	pass # Replace with function body.

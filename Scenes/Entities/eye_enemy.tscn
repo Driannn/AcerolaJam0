@@ -128,10 +128,12 @@ libraries = {
 }
 autoplay = "idle"
 
-[node name="HeathBar" parent="." instance=ExtResource("4_qwtri")]
+[node name="HeathBar" parent="." node_paths=PackedStringArray("destroy_node") instance=ExtResource("4_qwtri")]
 unique_name_in_owner = true
 offset_left = -13.0
 offset_top = -38.0
 offset_right = 221.0
 offset_bottom = -30.0
 scale = Vector2(0.128285, 0.261161)
+destroy_on_zero_health = true
+destroy_node = NodePath("..")

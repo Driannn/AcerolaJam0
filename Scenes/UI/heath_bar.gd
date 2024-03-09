@@ -2,6 +2,8 @@ extends ProgressBar
 
 #tutorial for this
 #https://www.youtube.com/watch?v=f90ieBOoIYQ
+@export var destroy_on_zero_health := false
+@export var destroy_node: Node
 
 @onready var damage_bar = %DamageBar
 @onready var timer = %Timer
@@ -16,9 +18,9 @@ func _set_health(new_health):
 	
 	if health <= 0:
 		#queue_free()
-		
-		#Destroy parent game object
-		$"..".queue_free()
+		if destroy_on_zero_health:
+			#Destroy parent game object
+			destroy_node.queue_free()
 	
 	if health < prev_health:
 		timer.start()
