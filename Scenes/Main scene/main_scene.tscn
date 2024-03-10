@@ -107,3 +107,5 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="GameOverScreen" parent="UIElements" instance=ExtResource("7_y7ix1")]
+unique_name_in_owner = true
+visible = false

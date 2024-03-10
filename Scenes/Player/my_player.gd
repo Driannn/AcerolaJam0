@@ -176,9 +176,9 @@ func check_dead():
 		is_dead = true
 		sword.visible = false
 		ap.play("dead")
-		velocity.x * 0.1
 
-func dead_no_slippery(delta):
+
+func dead_no_slippery(_delta):
 	if is_dead:
 		velocity.x = 0
 
