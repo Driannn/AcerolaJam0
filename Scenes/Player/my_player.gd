@@ -39,6 +39,8 @@ extends CharacterBody2D
 #region normal variables
 ##Count amount of jumps, for double jump feature
 var jump_count : int = 0
+##Is player dead
+var dead := false
 #endregion
 
 #NATIVE GODOT FUNCTIONS
@@ -133,6 +135,9 @@ func take_damage(amount: int) -> void:
 	hurt_anim.start()
 	set_health(amount)
 	health -= amount
+	if health <= 0:
+		dead = true
+		print("You died ", dead)
 	print("Player take damage. health: ", health)
 
 func set_health(value):
