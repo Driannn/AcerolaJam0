@@ -211,6 +211,7 @@ script = ExtResource("3_a8wne")
 
 [node name="HeathBar" parent="Camera2D" instance=ExtResource("4_2c6ax")]
 unique_name_in_owner = true
+z_index = 2
 offset_left = -207.0
 offset_top = 33.0
 offset_right = 94.0
