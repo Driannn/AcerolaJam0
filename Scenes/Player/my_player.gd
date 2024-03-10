@@ -99,7 +99,10 @@ func move_on_x(delta : float) -> void:
 	var horizontal_direction = get_movement_input()
 	
 	if dashing:
-		velocity.x = dash_speed * horizontal_direction * delta * 50
+		if horizontal_direction < 0:
+			velocity.x = dash_speed * -1 * delta * 50
+		elif horizontal_direction > 0:
+			velocity.x = dash_speed * 1 * delta * 50
 		velocity.y = 0
 	else:
 		velocity.x = h_speed * horizontal_direction * delta * 50
@@ -111,7 +114,7 @@ func sprite_flip(horizontal_direction):
 	#If the player is moving
 	if horizontal_direction != 0:
 		#flip the sprite if the direction is left and go back to normal if direction is right
-		sprite.flip_h = horizontal_direction == -1
+		sprite.flip_h = horizontal_direction < 0
 		flip_sword()
 		
 func flip_sword():
