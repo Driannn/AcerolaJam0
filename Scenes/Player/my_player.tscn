@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bubsfc3tvkdsb"]
+[gd_scene load_steps=21 format=3 uid="uid://bubsfc3tvkdsb"]
 
 [ext_resource type="Texture2D" uid="uid://clh5e1uwbbtv0" path="res://Assets/Character/AnimationSheet_Character_byPenzilla.png" id="1_8w7mu"]
 [ext_resource type="Script" path="res://Scenes/Player/my_player.gd" id="1_ggs3h"]
@@ -152,9 +152,27 @@ tracks/0/keys = {
 "values": [24, 25, 26, 27, 28, 29, 30, 31]
 }
 
+[sub_resource type="Animation" id="Animation_xc72h"]
+resource_name = "dead"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.6, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(1, 7), Vector2i(2, 7), Vector2i(3, 7), Vector2i(4, 7), Vector2i(5, 7)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pgd4j"]
 _data = {
 "RESET": SubResource("Animation_jukvn"),
+"dead": SubResource("Animation_xc72h"),
 "fall": SubResource("Animation_llf4s"),
 "hurt": SubResource("Animation_6s7v0"),
 "idle": SubResource("Animation_ujvcn"),
@@ -190,6 +208,7 @@ vframes = 9
 frame = 48
 
 [node name="MyHurtBox" type="Area2D" parent="Sprite2D"]
+visible = false
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("3_3swkq")
@@ -200,6 +219,7 @@ shape = SubResource("CapsuleShape2D_meodc")
 debug_color = Color(0.831373, 0, 0.945098, 0.419608)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -14)
 shape = SubResource("CapsuleShape2D_flhek")
 
@@ -211,6 +231,7 @@ script = ExtResource("3_a8wne")
 
 [node name="HeathBar" parent="Camera2D" instance=ExtResource("4_2c6ax")]
 unique_name_in_owner = true
+self_modulate = Color(2, 1.5, 1.5, 1)
 z_index = 2
 offset_left = -207.0
 offset_top = 33.0
@@ -221,6 +242,7 @@ scale = Vector2(0.158147, 0.494211)
 theme_override_styles/fill = SubResource("StyleBoxFlat_aeibh")
 
 [node name="ColorRect" type="ColorRect" parent="Camera2D"]
+visible = false
 z_index = -2
 offset_left = -247.0
 offset_top = -135.0

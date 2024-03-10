@@ -56,7 +56,7 @@ extends CharacterBody2D
 ##Count amount of jumps, for double jump feature
 var jump_count : int = 0
 ##Is player dead
-var dead := false
+var is_dead := false
 #endregion
 
 #NATIVE GODOT FUNCTIONS
@@ -69,23 +69,23 @@ func _physics_process(delta):
 	#PLAYER MOVEMENT FUNCTIONS
 	
 	apply_gravity(delta)
-	#print("Current falling speed is: ", velocity.y * -1)
-	#print("Max gravity speed is: ",  gravity_max_speed)
-	move_on_x(delta)
-	#print("Velocity on X is: ", get_movement_input())
-	jump()
-	#print("Jump count is: ", jump_count)
-
+	 
+	if !is_dead:
+		move_on_x(delta)
+		jump()
+		#AMINATION LOGIC
+		update_animations(get_movement_input())
+	
 	#Moves the body based on player's velocity
 	move_and_slide()
 	
-	#AMINATION LOGIC
-	update_animations(get_movement_input())
 
 #MY FUNCTIONS
 
 ##Get players input
 func get_movement_input() -> float:
+	
+	
 	if Input.is_action_just_pressed("dash") and can_dash:
 		dashing = true
 		can_dash = false
@@ -128,6 +128,8 @@ func apply_gravity(delta : float) -> void:
 
 ##Check if it is possible to jump and returns a bool, resent the jump count on floor
 func handle_jump() -> bool:
+	
+	
 	if is_on_floor():
 		jump_count = 0
 	if Input.is_action_just_pressed("jump") && jump_count < max_jumps:
@@ -157,19 +159,26 @@ func update_animations(horizontal_direction : float) -> void:
 		ap.play("fall")
 
 func take_damage(amount: int) -> void:
-	ap.play("hurt")
-	ap.queue("idle")
-	hurt_anim.start()
+	
+
 	set_health(amount)
 	health -= amount
-	if health <= 0:
-		dead = true
-		print("You died ", dead)
+	ap.play("hurt")
+	hurt_anim.start()
+
+
+	check_dead()
 	print("Player take damage. health: ", health)
+
+func check_dead():
+	if health <= 0:
+		is_dead = true
+		sword.visible = false
+		#ap.play("dead")
+
 
 func set_health(value):
 	health_bar.health -= value
-
 
 #SIGNALS
 #hurt animation timer

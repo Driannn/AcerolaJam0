@@ -1,6 +1,5 @@
-[gd_scene load_steps=12 format=3 uid="uid://k7uj7aa54yyh"]
+[gd_scene load_steps=11 format=3 uid="uid://k7uj7aa54yyh"]
 
-[ext_resource type="PackedScene" uid="uid://wlj4gtu6tdi8" path="res://Scenes/Player/player_entity.tscn" id="1_1okhk"]
 [ext_resource type="Script" path="res://Scenes/Main scene/GameManager.gd" id="1_dq8ga"]
 [ext_resource type="PackedScene" uid="uid://cprdctgkrpvbo" path="res://Scenes/VFX/SnowGeneratorCPU.tscn" id="2_0g361"]
 [ext_resource type="PackedScene" uid="uid://db4ivmgtxggnu" path="res://Scenes/TileMaps/my_tile_map1.tscn" id="2_b388d"]
@@ -69,10 +68,6 @@ texture = ExtResource("5_v7brh")
 [node name="Sword02" type="Sprite2D" parent="EntityContainer/SKETCHING UP"]
 position = Vector2(9, -2)
 texture = ExtResource("8_hmrcu")
-
-[node name="PlayerEntity" parent="EntityContainer/SKETCHING UP" instance=ExtResource("1_1okhk")]
-position = Vector2(-48, -19)
-script = null
 
 [node name="Enemies" type="Node2D" parent="EntityContainer"]
 

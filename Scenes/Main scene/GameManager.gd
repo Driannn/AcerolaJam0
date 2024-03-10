@@ -1,11 +1,9 @@
 extends Node
 
-
-@onready var player_health = %MyPlayer
-
-func _process(_delta):
-	#print(player_health.health)
-	
+#
+#@onready var player_health = %MyPlayer
+#
+#func _process(_delta):
 	#if player_health.health <= 0 :
-		#print("change scene")
-	pass
+		#get_tree().change_scene_to_file("res://Scenes/Main scene/main_scene.tscn")
+#
