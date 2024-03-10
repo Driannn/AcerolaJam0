@@ -175,6 +175,7 @@ func check_dead():
 		is_dead = true
 		sword.visible = false
 		ap.play("dead")
+		velocity.x * 0.1
 
 
 func set_health(value):
@@ -182,9 +183,9 @@ func set_health(value):
 
 #SIGNALS
 #hurt animation timer
-func _on_timer_timeout():
+#func _on_timer_timeout():
 	#update_animations(get_movement_input())
-	pass # Replace with function body.
+	#pass # Replace with function body.
 
 #stop dashing
 func _on_dash_durantion_timeout():
