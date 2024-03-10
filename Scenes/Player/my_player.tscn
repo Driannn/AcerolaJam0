@@ -175,6 +175,7 @@ colors = PackedColorArray(0, 0.128971, 0.128971, 1, 0, 0.129412, 0.129412, 0)
 [node name="MyPlayer" type="CharacterBody2D"]
 script = ExtResource("1_ggs3h")
 h_speed = 150.0
+dash_speed = 1100.0
 jump_force = 275.0
 health = 50
 gravity_acceleration = 800.0
@@ -254,4 +255,16 @@ keep_drawning = true
 wait_time = 0.389
 one_shot = true
 
+[node name="DashDurantion" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.05
+one_shot = true
+
+[node name="DashCooldown" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.5
+one_shot = true
+
 [connection signal="timeout" from="HurtAnim" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="DashDurantion" to="." method="_on_dash_durantion_timeout"]
+[connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]

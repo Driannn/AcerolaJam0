@@ -8,6 +8,12 @@ extends CharacterBody2D
 @export_category("Player")
 ##Player speed on X
 @export var h_speed : float = 300.0
+##Dash speed
+@export var dash_speed := 900.0
+##Define if it is dashing or not
+@export var dashing := false
+##Limit when the player can dash
+@export var can_dash := true
 ##Jump forceof the player
 @export var jump_force : float = 200.0
 ##Determines the maximun of jumps the player can do
@@ -39,7 +45,10 @@ extends CharacterBody2D
 @onready var hurt_anim = $HurtAnim
 ##Reference to trail
 @onready var my_trails = %MyTrails
-
+##Reference to Dash timer
+@onready var dash_durantion = %DashDurantion
+##Dash cooldown
+@onready var dash_cooldown = %DashCooldown
 
 #endregion
 
@@ -66,8 +75,7 @@ func _physics_process(delta):
 	#print("Velocity on X is: ", get_movement_input())
 	jump()
 	#print("Jump count is: ", jump_count)
-	handle_trail()
-	
+
 	#Moves the body based on player's velocity
 	move_and_slide()
 	
@@ -78,12 +86,23 @@ func _physics_process(delta):
 
 ##Get players input
 func get_movement_input() -> float:
+	if Input.is_action_just_pressed("dash") and can_dash:
+		dashing = true
+		can_dash = false
+		dash_durantion.start()
+		dash_cooldown.start()
 	return Input.get_axis("move_left", "move_right")
 
 ##Use players input and apply it to the X velocity
 func move_on_x(delta : float) -> void:
 	var horizontal_direction = get_movement_input()
-	velocity.x = h_speed * horizontal_direction * delta * 50
+	
+	if dashing:
+		velocity.x = dash_speed * horizontal_direction * delta * 50
+		velocity.y = 0
+	else:
+		velocity.x = h_speed * horizontal_direction * delta * 50
+	
 	sprite_flip(horizontal_direction)
 
 ##Flip the sprite based on horizontal direction
@@ -151,14 +170,17 @@ func take_damage(amount: int) -> void:
 func set_health(value):
 	health_bar.health -= value
 
-func handle_trail():
-	#if is_on_floor(): #and not sashing in case of implement dash
-		#my_trails.max_lenght = 0
-	#else:
-		#my_trails.max_lenght = 12
-	pass
 
 #SIGNALS
+#hurt animation timer
 func _on_timer_timeout():
 	update_animations(get_movement_input())
 	pass # Replace with function body.
+
+#stop dashing
+func _on_dash_durantion_timeout():
+	dashing = false
+
+
+func _on_dash_cooldown_timeout():
+	can_dash = true

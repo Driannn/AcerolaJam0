@@ -15,7 +15,7 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ydxh1"]
 radius = 2.06104
-height = 26.8995
+height = 21.4755
 
 [sub_resource type="Animation" id="Animation_4qfoc"]
 length = 0.001
@@ -151,6 +151,7 @@ position = Vector2(4, -5)
 modulate = Color(1.1, 1.1, 1.1, 1)
 top_level = true
 z_index = -1
+points = PackedVector2Array(19, -9)
 width = 8.0
 width_curve = SubResource("Curve_1h4us")
 gradient = SubResource("Gradient_7mled")
@@ -164,7 +165,7 @@ collision_mask = 0
 script = ExtResource("4_w7csv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Sprite2D/MyHitBox"]
-position = Vector2(2, -2)
+position = Vector2(1, -1)
 rotation = 0.708861
 shape = SubResource("CapsuleShape2D_ydxh1")
 disabled = true
