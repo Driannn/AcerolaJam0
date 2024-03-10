@@ -159,13 +159,13 @@ func update_animations(horizontal_direction : float) -> void:
 		ap.play("fall")
 
 func take_damage(amount: int) -> void:
-	
 
+	if is_dead:
+		return
 	set_health(amount)
 	health -= amount
 	ap.play("hurt")
 	hurt_anim.start()
-
 
 	check_dead()
 	print("Player take damage. health: ", health)
@@ -174,7 +174,7 @@ func check_dead():
 	if health <= 0:
 		is_dead = true
 		sword.visible = false
-		#ap.play("dead")
+		ap.play("dead")
 
 
 func set_health(value):
@@ -183,7 +183,7 @@ func set_health(value):
 #SIGNALS
 #hurt animation timer
 func _on_timer_timeout():
-	update_animations(get_movement_input())
+	#update_animations(get_movement_input())
 	pass # Replace with function body.
 
 #stop dashing
