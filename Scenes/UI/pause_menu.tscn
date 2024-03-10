@@ -41,17 +41,25 @@ theme_override_fonts/font = ExtResource("1_fvnia")
 text = "PAUSE"
 horizontal_alignment = 1
 
-[node name="Button" type="Button" parent="Panel/VBoxContainer"]
+[node name="Reusme" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_fvnia")
+text = "Resume"
+
+[node name="Controls" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_fvnia")
 text = "Controls"
 
-[node name="Button2" type="Button" parent="Panel/VBoxContainer"]
+[node name="Options" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_fvnia")
 text = "Options"
 
-[node name="Button3" type="Button" parent="Panel/VBoxContainer"]
+[node name="Exit" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_fvnia")
 text = "Exit"
+
+[connection signal="pressed" from="Panel/VBoxContainer/Reusme" to="." method="_on_reusme_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

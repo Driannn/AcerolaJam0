@@ -12,3 +12,11 @@ func _on_game_manager_toggle_gaame_paaused(is_paused : bool):
 		show()
 	else:
 		hide()
+
+
+func _on_reusme_pressed():
+	game_manager.game_paused = false
+
+
+func _on_exit_pressed():
+	get_tree().quit()
