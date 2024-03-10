@@ -20,6 +20,10 @@ extends CharacterBody2D
 @export var gravity_acceleration : float = 500.0
 ##Gravity max speed
 @export var gravity_max_speed : float = 1000.0
+
+@export_category("VFX")
+##Trail lenght
+@export var trail_lenght := 12
 #endregion
 
 #region @onready variables
@@ -31,8 +35,11 @@ extends CharacterBody2D
 @onready var sword = %WeaponSword
 ##Reference to health bar
 @onready var health_bar = %HeathBar
-##Timer for hurt animation
+##Reference to Timer for hurt animation
 @onready var hurt_anim = $HurtAnim
+##Reference to trail
+@onready var my_trails = %MyTrails
+
 
 #endregion
 
@@ -59,6 +66,7 @@ func _physics_process(delta):
 	#print("Velocity on X is: ", get_movement_input())
 	jump()
 	#print("Jump count is: ", jump_count)
+	handle_trail()
 	
 	#Moves the body based on player's velocity
 	move_and_slide()
@@ -143,7 +151,14 @@ func take_damage(amount: int) -> void:
 func set_health(value):
 	health_bar.health -= value
 
+func handle_trail():
+	#if is_on_floor(): #and not sashing in case of implement dash
+		#my_trails.max_lenght = 0
+	#else:
+		#my_trails.max_lenght = 12
+	pass
 
+#SIGNALS
 func _on_timer_timeout():
 	update_animations(get_movement_input())
 	pass # Replace with function body.

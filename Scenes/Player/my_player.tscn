@@ -163,13 +163,14 @@ _data = {
 }
 
 [sub_resource type="Curve" id="Curve_ux24t"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.260073, 1), -0.144239, -0.144239, 0, 0, Vector2(1, 0.05), -1.2399, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1, 1), -0.144239, -0.144239, 0, 0, Vector2(1, 0.25), -0.800628, 0.0, 0, 0]
 point_count = 3
 metadata/_snap_enabled = true
 metadata/_snap_count = 20
 
 [sub_resource type="Gradient" id="Gradient_l3qge"]
-colors = PackedColorArray(0.741176, 0.027451, 0.0980392, 1, 0, 1, 1, 1)
+offsets = PackedFloat32Array(0.392308, 0.984615)
+colors = PackedColorArray(0, 0.128971, 0.128971, 1, 0, 0.129412, 0.129412, 0)
 
 [node name="MyPlayer" type="CharacterBody2D"]
 script = ExtResource("1_ggs3h")
@@ -229,6 +230,7 @@ unique_name_in_owner = true
 position = Vector2(-2, -19)
 
 [node name="MyTrails" type="Line2D" parent="."]
+unique_name_in_owner = true
 modulate = Color(1.5, 1.5, 1.5, 1)
 show_behind_parent = true
 top_level = true
@@ -236,8 +238,9 @@ z_index = -1
 width_curve = SubResource("Curve_ux24t")
 gradient = SubResource("Gradient_l3qge")
 script = ExtResource("5_p5b07")
-max_lenght = 12
+max_lenght = 7
 position_offset = Vector2(0, -12)
+keep_drawning = true
 
 [node name="HurtAnim" type="Timer" parent="."]
 wait_time = 0.389

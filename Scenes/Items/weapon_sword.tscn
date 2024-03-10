@@ -155,7 +155,8 @@ width = 8.0
 width_curve = SubResource("Curve_1h4us")
 gradient = SubResource("Gradient_7mled")
 script = ExtResource("4_dm5yi")
-max_lenght = 7
+max_lenght = 15
+keep_drawning = true
 
 [node name="MyHitBox" type="Area2D" parent="Node2D/Sprite2D"]
 collision_layer = 0

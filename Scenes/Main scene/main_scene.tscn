@@ -80,6 +80,12 @@ position = Vector2(547, 142)
 [node name="EyeEnemy2" parent="EntityContainer/Enemies" instance=ExtResource("7_rwyoi")]
 position = Vector2(782, 286)
 
+[node name="EyeEnemy5" parent="EntityContainer/Enemies" instance=ExtResource("7_rwyoi")]
+position = Vector2(-244, 513)
+
+[node name="EyeEnemy3" parent="EntityContainer/Enemies" instance=ExtResource("7_rwyoi")]
+position = Vector2(1648, 526)
+
 [node name="EyeEnemy4" parent="EntityContainer/Enemies" instance=ExtResource("7_rwyoi")]
 position = Vector2(-30, 207)
 
