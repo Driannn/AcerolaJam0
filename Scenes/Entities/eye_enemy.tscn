@@ -7,11 +7,13 @@
 [ext_resource type="Script" path="res://Scenes/Entities/EnemyHitBox.gd" id="4_o33od"]
 [ext_resource type="PackedScene" uid="uid://4far1tugdhd" path="res://Scenes/UI/heath_bar.tscn" id="4_qwtri"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_p13l0"]
-radius = 41.0488
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_1ty1u"]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_40hdv"]
 radius = 28.0
+height = 96.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_232rl"]
+radius = 26.88
+height = 70.0
 
 [sub_resource type="Animation" id="Animation_y1ou2"]
 length = 0.001
@@ -150,14 +152,14 @@ rotation = 6.28319
 texture = ExtResource("2_i2orp")
 
 [node name="MyHurtBox" type="Area2D" parent="Sprite2D"]
-visible = false
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("3_xf7gy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/MyHurtBox"]
-position = Vector2(1, -4)
-shape = SubResource("CircleShape2D_p13l0")
+position = Vector2(1.99998, -4.12001)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_40hdv")
 
 [node name="MyHitBox" type="Area2D" parent="Sprite2D"]
 collision_layer = 0
@@ -167,7 +169,8 @@ damage = 15
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite2D/MyHitBox"]
 position = Vector2(1.99998, -4.00001)
-shape = SubResource("CircleShape2D_1ty1u")
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_232rl")
 debug_color = Color(0.764706, 0.172549, 1, 0.419608)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
