@@ -1,7 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://m5qqeskwgghk"]
+[gd_scene load_steps=4 format=3 uid="uid://m5qqeskwgghk"]
 
 [ext_resource type="Script" path="res://Scenes/UI/pause_menu.gd" id="1_63ibb"]
 [ext_resource type="FontFile" uid="uid://dl8ifxf7qv5ji" path="res://Assets/Fonts/Montserrat-Bold.otf" id="1_fvnia"]
+
+[sub_resource type="StyleBoxLine" id="StyleBoxLine_ee35v"]
+color = Color(0.231373, 0.545098, 0.768627, 0.239216)
+grow_begin = 300.0
+grow_end = 300.0
+thickness = 21
 
 [node name="PauseMenu" type="Control"]
 process_mode = 2
@@ -15,17 +21,15 @@ script = ExtResource("1_63ibb")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
+anchors_preset = 4
 anchor_top = 0.5
-anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -59.0
-offset_top = -65.0
-offset_right = 59.0
-offset_bottom = 65.0
-grow_horizontal = 2
+offset_left = 50.0
+offset_top = -82.0
+offset_right = 168.0
+offset_bottom = 82.0
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxLine_ee35v")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 1
