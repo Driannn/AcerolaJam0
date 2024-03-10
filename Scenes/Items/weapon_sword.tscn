@@ -140,6 +140,7 @@ position = Vector2(5, 8)
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D"]
 unique_name_in_owner = true
+modulate = Color(1.2, 1.2, 1.2, 1)
 position = Vector2(7, -8)
 texture = ExtResource("1_p2esc")
 
@@ -147,6 +148,7 @@ texture = ExtResource("1_p2esc")
 position = Vector2(4, -5)
 
 [node name="MyTrails" type="Line2D" parent="Node2D/Sprite2D/Node2D"]
+modulate = Color(1.5, 1.5, 1.5, 1)
 top_level = true
 z_index = -1
 width = 8.0

@@ -82,13 +82,13 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite2D:modulate")
-tracks/0/interp = 1
+tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.05),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Color(26.857, 21.714, 24.572, 1), Color(1, 1, 1, 1)]
+"values": [Color(6, 6, 6, 0.103), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_ujvcn"]
@@ -229,6 +229,7 @@ unique_name_in_owner = true
 position = Vector2(-2, -19)
 
 [node name="MyTrails" type="Line2D" parent="."]
+modulate = Color(1.5, 1.5, 1.5, 1)
 show_behind_parent = true
 top_level = true
 z_index = -1

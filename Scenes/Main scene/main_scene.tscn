@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://k7uj7aa54yyh"]
+[gd_scene load_steps=12 format=3 uid="uid://k7uj7aa54yyh"]
 
 [ext_resource type="PackedScene" uid="uid://wlj4gtu6tdi8" path="res://Scenes/Player/player_entity.tscn" id="1_1okhk"]
 [ext_resource type="Script" path="res://Scenes/Main scene/GameManager.gd" id="1_dq8ga"]
@@ -10,6 +10,12 @@
 [ext_resource type="Texture2D" uid="uid://y5nofrxknf74" path="res://Assets/Character/Eye try 2 test.png" id="5_v7brh"]
 [ext_resource type="PackedScene" uid="uid://cldxd32efc4gh" path="res://Scenes/Entities/eye_enemy.tscn" id="7_rwyoi"]
 [ext_resource type="Texture2D" uid="uid://dlosi3wh3jsx3" path="res://Assets/Items/Sword_02.png" id="8_hmrcu"]
+
+[sub_resource type="Environment" id="Environment_5iead"]
+background_mode = 3
+glow_enabled = true
+glow_bloom = 0.15
+glow_blend_mode = 0
 
 [node name="MainScene" type="Node2D"]
 
@@ -95,3 +101,6 @@ position = Vector2(124.965, -128)
 lifetime = 15.0
 speed_scale = 1.05
 emission_rect_extents = Vector2(512, 1)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5iead")
