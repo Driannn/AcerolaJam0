@@ -8,6 +8,12 @@ extends CharacterBody2D
 @export_category("Player")
 ##Player speed on X
 @export var h_speed : float = 300.0
+##Dash speed
+@export var dash_speed := 900.0
+##Define if it is dashing or not
+@export var dashing := false
+##Limit when the player can dash
+@export var can_dash := true
 ##Jump forceof the player
 @export var jump_force : float = 200.0
 ##Determines the maximun of jumps the player can do
@@ -20,6 +26,10 @@ extends CharacterBody2D
 @export var gravity_acceleration : float = 500.0
 ##Gravity max speed
 @export var gravity_max_speed : float = 1000.0
+
+@export_category("VFX")
+##Trail lenght
+@export var trail_lenght := 12
 #endregion
 
 #region @onready variables
@@ -31,14 +41,22 @@ extends CharacterBody2D
 @onready var sword = %WeaponSword
 ##Reference to health bar
 @onready var health_bar = %HeathBar
-##Timer for hurt animation
+##Reference to Timer for hurt animation
 @onready var hurt_anim = $HurtAnim
+##Reference to trail
+@onready var my_trails = %MyTrails
+##Reference to Dash timer
+@onready var dash_durantion = %DashDurantion
+##Dash cooldown
+@onready var dash_cooldown = %DashCooldown
 
 #endregion
 
 #region normal variables
 ##Count amount of jumps, for double jump feature
 var jump_count : int = 0
+##Is player dead
+var dead := false
 #endregion
 
 #NATIVE GODOT FUNCTIONS
@@ -57,7 +75,7 @@ func _physics_process(delta):
 	#print("Velocity on X is: ", get_movement_input())
 	jump()
 	#print("Jump count is: ", jump_count)
-	
+
 	#Moves the body based on player's velocity
 	move_and_slide()
 	
@@ -68,12 +86,23 @@ func _physics_process(delta):
 
 ##Get players input
 func get_movement_input() -> float:
+	if Input.is_action_just_pressed("dash") and can_dash:
+		dashing = true
+		can_dash = false
+		dash_durantion.start()
+		dash_cooldown.start()
 	return Input.get_axis("move_left", "move_right")
 
 ##Use players input and apply it to the X velocity
 func move_on_x(delta : float) -> void:
 	var horizontal_direction = get_movement_input()
-	velocity.x = h_speed * horizontal_direction * delta * 50
+	
+	if dashing:
+		velocity.x = dash_speed * horizontal_direction * delta * 50
+		velocity.y = 0
+	else:
+		velocity.x = h_speed * horizontal_direction * delta * 50
+	
 	sprite_flip(horizontal_direction)
 
 ##Flip the sprite based on horizontal direction
@@ -133,12 +162,25 @@ func take_damage(amount: int) -> void:
 	hurt_anim.start()
 	set_health(amount)
 	health -= amount
+	if health <= 0:
+		dead = true
+		print("You died ", dead)
 	print("Player take damage. health: ", health)
 
 func set_health(value):
 	health_bar.health -= value
 
 
+#SIGNALS
+#hurt animation timer
 func _on_timer_timeout():
 	update_animations(get_movement_input())
 	pass # Replace with function body.
+
+#stop dashing
+func _on_dash_durantion_timeout():
+	dashing = false
+
+
+func _on_dash_cooldown_timeout():
+	can_dash = true

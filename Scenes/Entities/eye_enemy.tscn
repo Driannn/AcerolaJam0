@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://cldxd32efc4gh"]
+[gd_scene load_steps=13 format=3 uid="uid://cldxd32efc4gh"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/eye_enemy.gd" id="1_2ixle"]
 [ext_resource type="Texture2D" uid="uid://y5nofrxknf74" path="res://Assets/Character/Eye try 2 test.png" id="1_7xmje"]
+[ext_resource type="Texture2D" uid="uid://b5gsfhych7hta" path="res://Assets/Character/Eye full white.png" id="2_i2orp"]
 [ext_resource type="Script" path="res://Scenes/Entities/EnemyHurtBox.gd" id="3_xf7gy"]
 [ext_resource type="Script" path="res://Scenes/Entities/EnemyHitBox.gd" id="4_o33od"]
 [ext_resource type="PackedScene" uid="uid://4far1tugdhd" path="res://Scenes/UI/heath_bar.tscn" id="4_qwtri"]
@@ -38,6 +39,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_i2orp")]
+}
 
 [sub_resource type="Animation" id="Animation_1dyb3"]
 resource_name = "idle"
@@ -67,6 +80,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 0.941176, 0.701961, 1), Color(1, 0.760784, 0.878431, 1), Color(0.827451, 0.878431, 1, 1), Color(0.670588, 1, 0.905882, 1)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_7xmje")]
+}
 
 [sub_resource type="Animation" id="Animation_ah2uu"]
 resource_name = "take_damage"
@@ -80,8 +105,32 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Color(1.2, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_i2orp")]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(24, 10.285, 8.571, 1)]
+"values": [Vector2(3, -8)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_blspn"]
@@ -98,7 +147,7 @@ health = 40
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1, 4)
 rotation = 6.28319
-texture = ExtResource("1_7xmje")
+texture = ExtResource("2_i2orp")
 
 [node name="MyHurtBox" type="Area2D" parent="Sprite2D"]
 visible = false

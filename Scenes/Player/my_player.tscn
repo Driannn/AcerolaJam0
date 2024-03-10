@@ -82,13 +82,13 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Sprite2D:modulate")
-tracks/0/interp = 1
+tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.05),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [Color(26.857, 21.714, 24.572, 1), Color(1, 1, 1, 1)]
+"values": [Color(6, 6, 6, 0.103), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_ujvcn"]
@@ -163,17 +163,19 @@ _data = {
 }
 
 [sub_resource type="Curve" id="Curve_ux24t"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.260073, 1), -0.144239, -0.144239, 0, 0, Vector2(1, 0.05), -1.2399, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.1, 1), -0.144239, -0.144239, 0, 0, Vector2(1, 0.25), -0.800628, 0.0, 0, 0]
 point_count = 3
 metadata/_snap_enabled = true
 metadata/_snap_count = 20
 
 [sub_resource type="Gradient" id="Gradient_l3qge"]
-colors = PackedColorArray(0.741176, 0.027451, 0.0980392, 1, 0, 1, 1, 1)
+offsets = PackedFloat32Array(0.392308, 0.984615)
+colors = PackedColorArray(0, 0.128971, 0.128971, 1, 0, 0.129412, 0.129412, 0)
 
 [node name="MyPlayer" type="CharacterBody2D"]
 script = ExtResource("1_ggs3h")
 h_speed = 150.0
+dash_speed = 1100.0
 jump_force = 275.0
 health = 50
 gravity_acceleration = 800.0
@@ -217,6 +219,14 @@ rotation = -1.5708
 scale = Vector2(0.158147, 0.494211)
 theme_override_styles/fill = SubResource("StyleBoxFlat_aeibh")
 
+[node name="ColorRect" type="ColorRect" parent="Camera2D"]
+z_index = -2
+offset_left = -247.0
+offset_top = -135.0
+offset_right = 239.0
+offset_bottom = 152.0
+color = Color(0, 0, 0, 1)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
@@ -229,17 +239,32 @@ unique_name_in_owner = true
 position = Vector2(-2, -19)
 
 [node name="MyTrails" type="Line2D" parent="."]
+unique_name_in_owner = true
+modulate = Color(1.5, 1.5, 1.5, 1)
 show_behind_parent = true
 top_level = true
 z_index = -1
 width_curve = SubResource("Curve_ux24t")
 gradient = SubResource("Gradient_l3qge")
 script = ExtResource("5_p5b07")
-max_lenght = 12
+max_lenght = 7
 position_offset = Vector2(0, -12)
+keep_drawning = true
 
 [node name="HurtAnim" type="Timer" parent="."]
 wait_time = 0.389
 one_shot = true
 
+[node name="DashDurantion" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.05
+one_shot = true
+
+[node name="DashCooldown" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.5
+one_shot = true
+
 [connection signal="timeout" from="HurtAnim" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="DashDurantion" to="." method="_on_dash_durantion_timeout"]
+[connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
