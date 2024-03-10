@@ -175,6 +175,7 @@ func check_dead():
 	if health <= 0:
 		is_dead = true
 		sword.visible = false
+		sword.queue_free()
 		ap.play("dead")
 
 

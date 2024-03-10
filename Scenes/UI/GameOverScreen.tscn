@@ -1,44 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://cwo3p17l08hsm"]
+[gd_scene load_steps=5 format=3 uid="uid://cwo3p17l08hsm"]
 
 [ext_resource type="FontFile" uid="uid://dl8ifxf7qv5ji" path="res://Assets/Fonts/Montserrat-Bold.otf" id="1_j26b0"]
 [ext_resource type="Script" path="res://Scenes/UI/GameOverScreen.gd" id="1_pqter"]
 
 [sub_resource type="Animation" id="Animation_s7ows"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GameOverShadow:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-266, -1)]
-}
-
-[sub_resource type="Animation" id="Animation_066q6"]
-resource_name = "ShadowAnimation"
-length = 3.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("GameOverShadow:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 2.8, 3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(-271, 98), Vector2(-266, -1), Vector2(450, -1), Vector2(450, 98)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_myqh2"]
 _data = {
-"RESET": SubResource("Animation_s7ows"),
-"ShadowAnimation": SubResource("Animation_066q6")
+"RESET": SubResource("Animation_s7ows")
 }
 
 [node name="GameOverScreen" type="CanvasLayer"]
@@ -64,24 +34,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.945098, 0, 0.172549, 0.184314)
 
-[node name="GameOverShadow" type="Label" parent="Color"]
-layout_mode = 1
-anchors_preset = 14
-anchor_top = 0.5
-anchor_right = 1.0
-anchor_bottom = 0.5
-offset_left = -266.0
-offset_top = -34.0
-offset_right = -450.0
-offset_bottom = 17.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0, 0, 0, 0.760784)
-theme_override_fonts/font = ExtResource("1_j26b0")
-theme_override_font_sizes/font_size = 41
-text = "GAME OVER"
-horizontal_alignment = 1
-
 [node name="GameOver" type="Label" parent="Color"]
 layout_mode = 1
 anchors_preset = 15
@@ -106,6 +58,7 @@ offset_top = 37.0
 offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0.8, 0.8, 0.8, 1)
 theme_override_fonts/font = ExtResource("1_j26b0")
 theme_override_font_sizes/font_size = 10
 text = "Press R or Select to restart"
@@ -116,4 +69,3 @@ vertical_alignment = 2
 libraries = {
 "": SubResource("AnimationLibrary_myqh2")
 }
-autoplay = "ShadowAnimation"
