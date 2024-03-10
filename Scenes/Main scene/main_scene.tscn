@@ -46,6 +46,13 @@ layer_0/tile_data = PackedInt32Array(2883700, 1, 1, 2818164, 1, 1, 2752628, 1, 1
 unique_name_in_owner = true
 position = Vector2(96, 160)
 
+[node name="CPUParticles2D" parent="EntityContainer/MyPlayer" instance=ExtResource("2_0g361")]
+position = Vector2(131, -160)
+lifetime = 15.0
+speed_scale = 1.05
+emission_rect_extents = Vector2(512, 1)
+color = Color(0.988235, 0.188235, 0.741176, 1)
+
 [node name="Enemies" type="Node2D" parent="EntityContainer"]
 
 [node name="EyeEnemy" parent="EntityContainer/Enemies" instance=ExtResource("7_rwyoi")]
@@ -89,12 +96,7 @@ tween_parameters = null
 tween_on_load = true
 inactive_update_mode = 0
 
-[node name="CPUParticles2D" parent="Cameras/OnPlayerCamera" instance=ExtResource("2_0g361")]
-position = Vector2(124.965, -128)
-lifetime = 15.0
-speed_scale = 1.05
-emission_rect_extents = Vector2(512, 1)
-color = Color(0.988235, 0.188235, 0.741176, 1)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_5iead")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]

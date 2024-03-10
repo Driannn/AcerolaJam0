@@ -76,6 +76,7 @@ func _physics_process(delta):
 		#AMINATION LOGIC
 		update_animations(get_movement_input())
 	
+	dead_no_slippery(delta)
 	#Moves the body based on player's velocity
 	move_and_slide()
 	
@@ -177,6 +178,9 @@ func check_dead():
 		ap.play("dead")
 		velocity.x * 0.1
 
+func dead_no_slippery(delta):
+	if is_dead:
+		velocity.x = 0
 
 func set_health(value):
 	health_bar.health -= value
