@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://m5qqeskwgghk"]
+[gd_scene load_steps=31 format=3 uid="uid://m5qqeskwgghk"]
 
 [ext_resource type="Script" path="res://Scenes/UI/pause_menu.gd" id="1_63ibb"]
 [ext_resource type="FontFile" uid="uid://dl8ifxf7qv5ji" path="res://Assets/Fonts/Montserrat-Bold.otf" id="1_fvnia"]
@@ -48,8 +48,6 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_raoul"]
-
 [node name="PauseMenu" type="Control"]
 process_mode = 2
 layout_mode = 3
@@ -60,62 +58,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_63ibb")
 
-[node name="Panel" type="Panel" parent="."]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_left = 32.0
-offset_top = -111.0
-offset_right = 150.0
-offset_bottom = 53.0
-grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxLine_ee35v")
-
-[node name="Label" type="Label" parent="Panel"]
-layout_mode = 2
-offset_right = 118.0
-offset_bottom = 21.0
-theme_override_fonts/font = ExtResource("1_fvnia")
-text = "PAUSE"
-horizontal_alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = 49.0
-offset_bottom = -3.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 25
-
-[node name="Reusme" type="Button" parent="Panel/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_fvnia")
-theme_override_styles/normal = SubResource("StyleBoxFlat_gwflw")
-button_mask = 5
-text = "Resume"
-
-[node name="Controls" type="Button" parent="Panel/VBoxContainer"]
-visible = false
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_fvnia")
-text = "Controls"
-
-[node name="Options" type="Button" parent="Panel/VBoxContainer"]
-visible = false
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_fvnia")
-text = "Options"
-
-[node name="Exit" type="Button" parent="Panel/VBoxContainer"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("1_fvnia")
-theme_override_styles/normal = SubResource("StyleBoxFlat_wy4fg")
-text = "Exit"
-
 [node name="Panel2" type="Panel" parent="."]
 layout_mode = 1
 anchors_preset = 15
@@ -123,7 +65,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_raoul")
 
 [node name="Controls" type="Label" parent="Panel2"]
 layout_mode = 2
@@ -323,6 +264,62 @@ texture = ExtResource("27_fqbrl")
 position = Vector2(216.145, 208)
 scale = Vector2(0.127268, 0.127268)
 texture = ExtResource("11_sof87")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 32.0
+offset_top = -111.0
+offset_right = 150.0
+offset_bottom = 53.0
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxLine_ee35v")
+
+[node name="Label" type="Label" parent="Panel"]
+layout_mode = 2
+offset_right = 118.0
+offset_bottom = 21.0
+theme_override_fonts/font = ExtResource("1_fvnia")
+text = "PAUSE"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 49.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 25
+
+[node name="Reusme" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_fvnia")
+theme_override_styles/normal = SubResource("StyleBoxFlat_gwflw")
+button_mask = 5
+text = "Resume"
+
+[node name="Controls" type="Button" parent="Panel/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_fvnia")
+text = "Controls"
+
+[node name="Options" type="Button" parent="Panel/VBoxContainer"]
+visible = false
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_fvnia")
+text = "Options"
+
+[node name="Exit" type="Button" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_fvnia")
+theme_override_styles/normal = SubResource("StyleBoxFlat_wy4fg")
+text = "Exit"
 
 [connection signal="pressed" from="Panel/VBoxContainer/Reusme" to="." method="_on_reusme_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
