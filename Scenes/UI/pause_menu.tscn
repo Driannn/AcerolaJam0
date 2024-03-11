@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://m5qqeskwgghk"]
+[gd_scene load_steps=34 format=3 uid="uid://m5qqeskwgghk"]
 
 [ext_resource type="Script" path="res://Scenes/UI/pause_menu.gd" id="1_63ibb"]
 [ext_resource type="FontFile" uid="uid://dl8ifxf7qv5ji" path="res://Assets/Fonts/Montserrat-Bold.otf" id="1_fvnia"]
@@ -26,6 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://cv68r16exemex" path="res://Assets/Icons/playstation3_button_select.png" id="21_fg5rs"]
 [ext_resource type="Texture2D" uid="uid://bxps10jd0cvpu" path="res://Assets/Icons/xbox_rt.png" id="22_7hv88"]
 [ext_resource type="Texture2D" uid="uid://lfjhb51kkdrw" path="res://Assets/Icons/xbox_button_start.png" id="27_fqbrl"]
+[ext_resource type="Texture2D" uid="uid://detfy8k5xkoxq" path="res://Assets/Icons/keyboard_p.png" id="27_xf8ub"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jh2i8"]
 bg_color = Color(0, 0, 0, 0.917647)
@@ -266,6 +267,11 @@ offset_right = 358.145
 offset_bottom = 205.0
 theme_override_fonts/font = ExtResource("1_fvnia")
 text = "PAUSE"
+
+[node name="KeyboardP" type="Sprite2D" parent="Controls"]
+position = Vector2(248, 208)
+scale = Vector2(0.127387, 0.126386)
+texture = ExtResource("27_xf8ub")
 
 [node name="XboxButtonStart" type="Sprite2D" parent="Controls"]
 position = Vector2(232.145, 208)

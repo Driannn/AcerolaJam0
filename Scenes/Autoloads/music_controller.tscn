@@ -11,3 +11,4 @@ on_pause_pitch = 0.3
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
 max_distance = 20000.0
 attenuation = 1e-05
+bus = &"Music"
