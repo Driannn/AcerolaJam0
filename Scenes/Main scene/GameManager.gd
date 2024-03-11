@@ -22,7 +22,7 @@ func _process(_delta):
 	if !MusicController.is_music_playing:
 		MusicController.play_music()
 	
-	if game_paused:
+	if game_paused or player.is_dead:
 		MusicController.pitch_down()
 	else:
 		MusicController.reset_pitch()
