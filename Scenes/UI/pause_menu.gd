@@ -1,6 +1,7 @@
 extends Control
 
 @onready var game_manager = %GameManager
+@onready var resume = $Panel/VBoxContainer/Reusme
 
 func _ready():
 	hide()
@@ -10,6 +11,7 @@ func _ready():
 func _on_game_manager_toggle_gaame_paaused(is_paused : bool):
 	if is_paused:
 		show()
+		resume.grab_focus()
 	else:
 		hide()
 

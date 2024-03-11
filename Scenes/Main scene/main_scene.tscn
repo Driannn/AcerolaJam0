@@ -79,6 +79,7 @@ position = Vector2(1648, 526)
 position = Vector2(-30, 207)
 
 [node name="Cameras" type="Node2D" parent="."]
+process_mode = 1
 
 [node name="OnPlayerCamera" type="Node2D" parent="Cameras"]
 position = Vector2(102.035, 128)
