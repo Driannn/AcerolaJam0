@@ -17,6 +17,9 @@ var game_paused : bool = false:
 		get_tree().paused = game_paused
 		emit_signal("toggle_game_paused", game_paused)
 
+func _ready():
+	MusicController.play_music()
+
 func _process(_delta):
 	
 	if player.is_dead:
