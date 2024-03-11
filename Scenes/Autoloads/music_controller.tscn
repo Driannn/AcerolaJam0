@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Node.gd" id="1_np2jt"]
 
 [node name="MusicController" type="Node"]
+process_mode = 3
 script = ExtResource("1_np2jt")
 
 [node name="MusicPlayer" type="AudioStreamPlayer2D" parent="."]
