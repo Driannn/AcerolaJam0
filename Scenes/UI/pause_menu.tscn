@@ -1,13 +1,34 @@
-[gd_scene load_steps=4 format=3 uid="uid://m5qqeskwgghk"]
+[gd_scene load_steps=24 format=3 uid="uid://m5qqeskwgghk"]
 
 [ext_resource type="Script" path="res://Scenes/UI/pause_menu.gd" id="1_63ibb"]
 [ext_resource type="FontFile" uid="uid://dl8ifxf7qv5ji" path="res://Assets/Fonts/Montserrat-Bold.otf" id="1_fvnia"]
+[ext_resource type="Texture2D" uid="uid://07v8b5wvdk1y" path="res://Assets/Icons/keyboard_a.png" id="3_01unj"]
+[ext_resource type="Texture2D" uid="uid://bswcin6r8innt" path="res://Assets/Icons/keyboard_d.png" id="4_xur7j"]
+[ext_resource type="Texture2D" uid="uid://btsah0q3jn2sv" path="res://Assets/Icons/switch_dpad_horizontal_outline.png" id="5_t47yh"]
+[ext_resource type="Texture2D" uid="uid://bqbx0a5j0nt8" path="res://Assets/Icons/steamdeck_stick_l_horizontal.png" id="6_4ha5c"]
+[ext_resource type="Texture2D" uid="uid://cqcm3bcltybyp" path="res://Assets/Icons/keyboard_arrows_horizontal_outline.png" id="7_qtk3d"]
+[ext_resource type="Texture2D" uid="uid://nc8b8l6sg26c" path="res://Assets/Icons/keyboard_f5.png" id="8_3gk24"]
+[ext_resource type="Texture2D" uid="uid://sg55d4rg2yml" path="res://Assets/Icons/keyboard_arrows_up_outline.png" id="8_xpxrr"]
+[ext_resource type="Texture2D" uid="uid://cu6dd5rqvv3jl" path="res://Assets/Icons/keyboard_w.png" id="9_1t8y4"]
+[ext_resource type="Texture2D" uid="uid://bcxccopcvvwp8" path="res://Assets/Icons/keyboard_x.png" id="9_aixkr"]
+[ext_resource type="Texture2D" uid="uid://bn30ogctghnfu" path="res://Assets/Icons/keyboard_j.png" id="10_g6s16"]
+[ext_resource type="Texture2D" uid="uid://y0dubtfschn4" path="res://Assets/Icons/mouse_left_outline.png" id="10_gdahw"]
+[ext_resource type="Texture2D" uid="uid://dj4nitmw0fkux" path="res://Assets/Icons/keyboard_c.png" id="10_gydik"]
+[ext_resource type="Texture2D" uid="uid://bs63i57okmmn8" path="res://Assets/Icons/keyboard_escape.png" id="11_sof87"]
+[ext_resource type="Texture2D" uid="uid://c6j5xulstgyxs" path="res://Assets/Icons/keyboard_r.png" id="12_1oov4"]
+[ext_resource type="Texture2D" uid="uid://75vqtnbd4vmg" path="res://Assets/Icons/keyboard_z.png" id="13_aarcg"]
+[ext_resource type="Texture2D" uid="uid://gan54okv4qi1" path="res://Assets/Icons/keyboard_l.png" id="14_q4mf8"]
+[ext_resource type="Texture2D" uid="uid://dhkyyie4rj8lp" path="res://Assets/Icons/keyboard_k.png" id="14_y8ieu"]
+[ext_resource type="Texture2D" uid="uid://d2jjjpjbjva5l" path="res://Assets/Icons/mouse_right_outline.png" id="19_qyedj"]
+[ext_resource type="Texture2D" uid="uid://cv68r16exemex" path="res://Assets/Icons/playstation3_button_select.png" id="21_fg5rs"]
 
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_ee35v"]
 color = Color(0.231373, 0.545098, 0.768627, 0.239216)
 grow_begin = 300.0
 grow_end = 300.0
 thickness = 21
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_raoul"]
 
 [node name="PauseMenu" type="Control"]
 process_mode = 2
@@ -24,10 +45,10 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 50.0
-offset_top = -82.0
-offset_right = 168.0
-offset_bottom = 82.0
+offset_left = 32.0
+offset_top = -111.0
+offset_right = 150.0
+offset_bottom = 53.0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_ee35v")
 
@@ -66,6 +87,174 @@ text = "Options"
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_fvnia")
 text = "Exit"
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_raoul")
+
+[node name="Controls" type="Label" parent="Panel2"]
+layout_mode = 2
+offset_left = 242.0
+offset_top = 15.0
+offset_right = 360.0
+offset_bottom = 36.0
+theme_override_fonts/font = ExtResource("1_fvnia")
+text = "CONTROLS"
+horizontal_alignment = 1
+
+[node name="Move" type="Label" parent="Panel2"]
+layout_mode = 2
+offset_left = 360.0
+offset_top = 48.0
+offset_right = 440.0
+offset_bottom = 69.0
+theme_override_fonts/font = ExtResource("1_fvnia")
+text = "MOVE"
+
+[node name="KeyboardA" type="Sprite2D" parent="Panel2"]
+position = Vector2(368, 72)
+scale = Vector2(0.125651, 0.125651)
+texture = ExtResource("3_01unj")
+
+[node name="KeyboardD" type="Sprite2D" parent="Panel2"]
+position = Vector2(384, 72)
+scale = Vector2(0.123643, 0.123643)
+texture = ExtResource("4_xur7j")
+
+[node name="SwitchDpadHorizontalOutline" type="Sprite2D" parent="Panel2"]
+position = Vector2(400, 72)
+scale = Vector2(0.127154, 0.127154)
+texture = ExtResource("5_t47yh")
+
+[node name="SteamdeckStickLHorizontal" type="Sprite2D" parent="Panel2"]
+position = Vector2(416, 72)
+scale = Vector2(0.12499, 0.12499)
+texture = ExtResource("6_4ha5c")
+
+[node name="KeyboardArrowsHorizontalOutline" type="Sprite2D" parent="Panel2"]
+position = Vector2(432, 72)
+scale = Vector2(0.123593, 0.123593)
+texture = ExtResource("7_qtk3d")
+
+[node name="Attack" type="Label" parent="Panel2"]
+layout_mode = 2
+offset_left = 360.0
+offset_top = 104.0
+offset_right = 440.0
+offset_bottom = 125.0
+theme_override_fonts/font = ExtResource("1_fvnia")
+text = "ATTACK"
+
+[node name="KeyboardK" type="Sprite2D" parent="Panel2"]
+position = Vector2(368, 128)
+scale = Vector2(0.123693, 0.123693)
+texture = ExtResource("14_y8ieu")
+
+[node name="KeyboardX" type="Sprite2D" parent="Panel2"]
+position = Vector2(384, 128)
+scale = Vector2(0.124491, 0.124491)
+texture = ExtResource("9_aixkr")
+
+[node name="MouseLeftOutline" type="Sprite2D" parent="Panel2"]
+position = Vector2(400, 128)
+scale = Vector2(0.122041, 0.122041)
+texture = ExtResource("10_gdahw")
+
+[node name="Restart" type="Label" parent="Panel2"]
+layout_mode = 2
+offset_left = 360.0
+offset_top = 168.0
+offset_right = 440.0
+offset_bottom = 189.0
+theme_override_fonts/font = ExtResource("1_fvnia")
+text = "RESTART"
+
+[node name="KeyboardF5" type="Sprite2D" parent="Panel2"]
+position = Vector2(368, 192)
+scale = Vector2(0.128569, 0.128569)
+texture = ExtResource("8_3gk24")
+
+[node name="KeyboardR" type="Sprite2D" parent="Panel2"]
+position = Vector2(384, 192)
+scale = Vector2(0.125835, 0.125835)
+texture = ExtResource("12_1oov4")
+
+[node name="Jump" type="Label" parent="Panel2"]
+layout_mode = 2
+offset_left = 208.0
+offset_top = 48.0
+offset_right = 265.0
+offset_bottom = 69.0
+theme_override_fonts/font = ExtResource("1_fvnia")
+text = "JUMP"
+
+[node name="KeyboardZ" type="Sprite2D" parent="Panel2"]
+position = Vector2(224, 72)
+scale = Vector2(0.124321, 0.124321)
+texture = ExtResource("13_aarcg")
+
+[node name="KeyboardArrowsUpOutline" type="Sprite2D" parent="Panel2"]
+position = Vector2(272, 72)
+scale = Vector2(0.128114, 0.128114)
+texture = ExtResource("8_xpxrr")
+
+[node name="KeyboardJ" type="Sprite2D" parent="Panel2"]
+position = Vector2(240, 72)
+scale = Vector2(0.126702, 0.126702)
+texture = ExtResource("10_g6s16")
+
+[node name="KeyboardW" type="Sprite2D" parent="Panel2"]
+position = Vector2(256, 72)
+scale = Vector2(0.121213, 0.121213)
+texture = ExtResource("9_1t8y4")
+
+[node name="Dash" type="Label" parent="Panel2"]
+layout_mode = 2
+offset_left = 208.0
+offset_top = 104.0
+offset_right = 265.0
+offset_bottom = 125.0
+theme_override_fonts/font = ExtResource("1_fvnia")
+text = "DASH"
+
+[node name="KeyboardC" type="Sprite2D" parent="Panel2"]
+position = Vector2(271.927, 128.02)
+scale = Vector2(0.125309, 0.125309)
+texture = ExtResource("10_gydik")
+
+[node name="KeyboardL" type="Sprite2D" parent="Panel2"]
+position = Vector2(255.927, 128.02)
+scale = Vector2(0.123858, 0.123858)
+texture = ExtResource("14_q4mf8")
+
+[node name="MouseRightOutline" type="Sprite2D" parent="Panel2"]
+position = Vector2(288, 128)
+scale = Vector2(0.121753, 0.121753)
+texture = ExtResource("19_qyedj")
+
+[node name="Pause" type="Label" parent="Panel2"]
+layout_mode = 2
+offset_left = 208.0
+offset_top = 168.0
+offset_right = 358.0
+offset_bottom = 189.0
+theme_override_fonts/font = ExtResource("1_fvnia")
+text = "PAUSE"
+
+[node name="KeyboardEscape" type="Sprite2D" parent="Panel2"]
+position = Vector2(216, 192)
+scale = Vector2(0.127268, 0.127268)
+texture = ExtResource("11_sof87")
+
+[node name="Playstation3ButtonSelect" type="Sprite2D" parent="."]
+position = Vector2(400, 192)
+scale = Vector2(0.12684, 0.12684)
+texture = ExtResource("21_fg5rs")
 
 [connection signal="pressed" from="Panel/VBoxContainer/Reusme" to="." method="_on_reusme_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
