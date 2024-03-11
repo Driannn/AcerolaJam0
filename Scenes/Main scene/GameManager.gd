@@ -19,6 +19,14 @@ var game_paused : bool = false:
 
 func _process(_delta):
 	
+	if !MusicController.is_music_playing:
+		MusicController.play_music()
+	
+	if game_paused:
+		MusicController.pitch_down()
+	else:
+		MusicController.reset_pitch()
+	
 	if player.is_dead:
 		show_game_over_screen()
 	

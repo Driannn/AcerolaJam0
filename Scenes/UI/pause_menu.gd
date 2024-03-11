@@ -1,7 +1,7 @@
 extends Control
 
 @onready var game_manager = %GameManager
-@onready var resume = $Panel/VBoxContainer/Reusme
+@onready var resume = $Panel/VBoxContainer/Resume
 
 func _ready():
 	hide()
