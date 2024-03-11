@@ -22,8 +22,7 @@ boot_splash/minimum_display_time=3000
 
 window/size/viewport_width=448
 window/size/viewport_height=252
-window/size/window_width_override=1280
-window/size/window_height_override=720
+window/size/mode=2
 window/stretch/mode="canvas_items"
 window/size/always_on_top.editor=false
 

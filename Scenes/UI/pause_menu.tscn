@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://m5qqeskwgghk"]
+[gd_scene load_steps=33 format=3 uid="uid://m5qqeskwgghk"]
 
 [ext_resource type="Script" path="res://Scenes/UI/pause_menu.gd" id="1_63ibb"]
 [ext_resource type="FontFile" uid="uid://dl8ifxf7qv5ji" path="res://Assets/Fonts/Montserrat-Bold.otf" id="1_fvnia"]
@@ -20,7 +20,6 @@
 [ext_resource type="Texture2D" uid="uid://75vqtnbd4vmg" path="res://Assets/Icons/keyboard_z.png" id="13_aarcg"]
 [ext_resource type="Texture2D" uid="uid://gan54okv4qi1" path="res://Assets/Icons/keyboard_l.png" id="14_q4mf8"]
 [ext_resource type="Texture2D" uid="uid://dhkyyie4rj8lp" path="res://Assets/Icons/keyboard_k.png" id="14_y8ieu"]
-[ext_resource type="Texture2D" uid="uid://bq1tur2s8fy7" path="res://Assets/Icons/switch_dpad_up_outline.png" id="15_6bj14"]
 [ext_resource type="Texture2D" uid="uid://bm25o28jeyn3l" path="res://Assets/Icons/switch_buttons_down_outline.png" id="16_uripk"]
 [ext_resource type="Texture2D" uid="uid://d2jjjpjbjva5l" path="res://Assets/Icons/mouse_right_outline.png" id="19_qyedj"]
 [ext_resource type="Texture2D" uid="uid://cy2y6wwjv5x42" path="res://Assets/Icons/switch_buttons_right_outline.png" id="21_3pr3g"]
@@ -44,8 +43,22 @@ corner_radius_top_right = 50
 corner_radius_bottom_right = 50
 corner_radius_bottom_left = 50
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7i3eo"]
+bg_color = Color(0, 0.564706, 0.560784, 0.784314)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wy4fg"]
 bg_color = Color(0.0156863, 0.952941, 0.945098, 0.14902)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u83tw"]
+bg_color = Color(0, 0.564706, 0.560784, 0.784314)
 corner_radius_top_left = 50
 corner_radius_top_right = 50
 corner_radius_bottom_right = 50
@@ -186,33 +199,28 @@ offset_bottom = 69.0
 theme_override_fonts/font = ExtResource("1_fvnia")
 text = "JUMP"
 
-[node name="SwitchDpadUpOutline" type="Sprite2D" parent="Controls"]
-position = Vector2(216.117, 72.1993)
-scale = Vector2(0.126833, 0.126833)
-texture = ExtResource("15_6bj14")
-
 [node name="SwitchButtonsDownOutline" type="Sprite2D" parent="Controls"]
-position = Vector2(232.117, 72.1993)
+position = Vector2(215.868, 72.1993)
 scale = Vector2(0.122943, 0.122943)
 texture = ExtResource("16_uripk")
 
 [node name="KeyboardZ" type="Sprite2D" parent="Controls"]
-position = Vector2(248.117, 72.1993)
+position = Vector2(231.868, 72.1993)
 scale = Vector2(0.124321, 0.124321)
 texture = ExtResource("13_aarcg")
 
 [node name="KeyboardArrowsUpOutline" type="Sprite2D" parent="Controls"]
-position = Vector2(296.117, 72.1993)
+position = Vector2(279.868, 72.1993)
 scale = Vector2(0.128114, 0.128114)
 texture = ExtResource("8_xpxrr")
 
 [node name="KeyboardJ" type="Sprite2D" parent="Controls"]
-position = Vector2(264.117, 72.1993)
+position = Vector2(247.868, 72.1993)
 scale = Vector2(0.126702, 0.126702)
 texture = ExtResource("10_g6s16")
 
 [node name="KeyboardW" type="Sprite2D" parent="Controls"]
-position = Vector2(280.117, 72.1993)
+position = Vector2(263.868, 72.1993)
 scale = Vector2(0.121213, 0.121213)
 texture = ExtResource("9_1t8y4")
 
@@ -304,6 +312,7 @@ theme_override_constants/separation = 25
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_fvnia")
 theme_override_styles/normal = SubResource("StyleBoxFlat_gwflw")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7i3eo")
 button_mask = 5
 text = "Resume"
 
@@ -323,6 +332,7 @@ text = "Options"
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_fvnia")
 theme_override_styles/normal = SubResource("StyleBoxFlat_wy4fg")
+theme_override_styles/hover = SubResource("StyleBoxFlat_u83tw")
 text = "Exit"
 
 [connection signal="pressed" from="Panel/VBoxContainer/Resume" to="." method="_on_reusme_pressed"]
