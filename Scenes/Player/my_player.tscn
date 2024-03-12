@@ -290,7 +290,7 @@ script = ExtResource("3_a8wne")
 [node name="HeathBar" type="ProgressBar" parent="Camera2D"]
 unique_name_in_owner = true
 modulate = Color(1.5, 1.5, 1.5, 1)
-z_index = 1
+z_index = 2
 offset_left = -213.0
 offset_top = 22.0
 offset_right = 88.0

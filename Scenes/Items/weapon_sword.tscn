@@ -176,12 +176,10 @@ modulate = Color(1, 1, 1.2, 1)
 top_level = true
 z_index = -1
 points = PackedVector2Array(19, -9)
-width = 8.0
+width = 16.205
 width_curve = SubResource("Curve_1h4us")
 gradient = SubResource("Gradient_7mled")
 script = ExtResource("4_dm5yi")
-max_lenght = 15
-position_offset = Vector2(4.04, 0)
 keep_drawning = true
 
 [node name="MyHitBox" type="Area2D" parent="Node2D/Sprite2D"]

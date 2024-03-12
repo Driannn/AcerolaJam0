@@ -10,7 +10,7 @@ func _ready():
 	health_bar.init_health(health)
 
 func take_damage(amount: int) -> void:
-	ap.play("take_damage")
+	ap.play("take_damage, enemy health: ", health)
 	print("Enermy take damage")
 	ap.queue("idle")
 	set_health(amount)

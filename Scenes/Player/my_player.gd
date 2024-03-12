@@ -86,7 +86,6 @@ func _physics_process(delta):
 ##Get players input
 func get_movement_input() -> float:
 	
-	
 	if Input.is_action_just_pressed("dash") and can_dash and velocity.x != 0:
 		dashing = true
 		can_dash = false
