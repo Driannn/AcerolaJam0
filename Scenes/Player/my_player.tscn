@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bubsfc3tvkdsb"]
+[gd_scene load_steps=22 format=3 uid="uid://bubsfc3tvkdsb"]
 
 [ext_resource type="Texture2D" uid="uid://clh5e1uwbbtv0" path="res://Assets/Character/AnimationSheet_Character_byPenzilla.png" id="1_8w7mu"]
 [ext_resource type="Script" path="res://Scenes/Player/my_player.gd" id="1_ggs3h"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://4far1tugdhd" path="res://Scenes/UI/heath_bar.tscn" id="4_2c6ax"]
 [ext_resource type="PackedScene" uid="uid://3rebuh30qoem" path="res://Scenes/Items/weapon_sword.tscn" id="4_kf80v"]
 [ext_resource type="Script" path="res://Scenes/Player/ObjectTrail.gd" id="5_p5b07"]
+[ext_resource type="Texture2D" uid="uid://mni3i2jaf0s" path="res://Assets/Icons/steamdeck_dpad.png" id="5_y2f5t"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_meodc"]
 radius = 5.0
@@ -18,6 +19,10 @@ height = 26.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aeibh"]
 bg_color = Color(0, 0.721569, 0.337255, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
 
 [sub_resource type="Animation" id="Animation_jukvn"]
 length = 0.001
@@ -256,14 +261,23 @@ script = ExtResource("3_a8wne")
 [node name="HeathBar" parent="Camera2D" instance=ExtResource("4_2c6ax")]
 unique_name_in_owner = true
 self_modulate = Color(2, 1.5, 1.5, 1)
-offset_left = -214.0
-offset_top = 43.0
-offset_right = 87.0
-offset_bottom = 55.0
+offset_left = -213.0
+offset_top = 22.0
+offset_right = 88.0
+offset_bottom = 34.0
 rotation = -1.5708
 scale = Vector2(0.158147, 0.494211)
 size_flags_horizontal = 0
 theme_override_styles/fill = SubResource("StyleBoxFlat_aeibh")
+
+[node name="SteamdeckDpad" type="Sprite2D" parent="Camera2D/HeathBar"]
+modulate = Color(0, 1.1, 0.337, 1)
+z_index = 5
+position = Vector2(-44.2628, 6.07025)
+rotation = 1.57081
+scale = Vector2(0.21679, 0.677471)
+skew = -1.0252e-05
+texture = ExtResource("5_y2f5t")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
@@ -300,7 +314,7 @@ one_shot = true
 
 [node name="DashCooldown" type="Timer" parent="."]
 unique_name_in_owner = true
-wait_time = 0.25
+wait_time = 0.4
 one_shot = true
 
 [connection signal="timeout" from="DashDurantion" to="." method="_on_dash_durantion_timeout"]

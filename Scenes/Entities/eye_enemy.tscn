@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cldxd32efc4gh"]
+[gd_scene load_steps=14 format=3 uid="uid://cldxd32efc4gh"]
 
 [ext_resource type="Script" path="res://Scenes/Entities/eye_enemy.gd" id="1_2ixle"]
 [ext_resource type="Texture2D" uid="uid://y5nofrxknf74" path="res://Assets/Character/Eye try 2 test.png" id="1_7xmje"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://Scenes/Entities/EnemyHurtBox.gd" id="3_xf7gy"]
 [ext_resource type="Script" path="res://Scenes/Entities/EnemyHitBox.gd" id="4_o33od"]
 [ext_resource type="PackedScene" uid="uid://4far1tugdhd" path="res://Scenes/UI/heath_bar.tscn" id="4_qwtri"]
+[ext_resource type="Texture2D" uid="uid://mni3i2jaf0s" path="res://Assets/Icons/steamdeck_dpad.png" id="7_hw0co"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_40hdv"]
 radius = 28.0
@@ -224,3 +225,13 @@ offset_bottom = -30.0
 scale = Vector2(0.128285, 0.261161)
 destroy_on_zero_health = true
 destroy_node = NodePath("..")
+
+[node name="SteamdeckDpad" type="Sprite2D" parent="HeathBar"]
+visible = false
+modulate = Color(0, 1.1, 0.337, 1)
+z_index = 5
+position = Vector2(-31.1806, 3.82906)
+rotation = 1.57081
+scale = Vector2(0.109041, 0.340755)
+skew = -1.0252e-05
+texture = ExtResource("7_hw0co")
