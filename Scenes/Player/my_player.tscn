@@ -1,12 +1,12 @@
-[gd_scene load_steps=22 format=3 uid="uid://bubsfc3tvkdsb"]
+[gd_scene load_steps=25 format=3 uid="uid://bubsfc3tvkdsb"]
 
 [ext_resource type="Texture2D" uid="uid://clh5e1uwbbtv0" path="res://Assets/Character/AnimationSheet_Character_byPenzilla.png" id="1_8w7mu"]
 [ext_resource type="Script" path="res://Scenes/Player/my_player.gd" id="1_ggs3h"]
 [ext_resource type="Script" path="res://Scenes/Player/PlayerHurtBox.gd" id="3_3swkq"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_a8wne"]
-[ext_resource type="PackedScene" uid="uid://4far1tugdhd" path="res://Scenes/UI/heath_bar.tscn" id="4_2c6ax"]
 [ext_resource type="PackedScene" uid="uid://3rebuh30qoem" path="res://Scenes/Items/weapon_sword.tscn" id="4_kf80v"]
 [ext_resource type="Script" path="res://Scenes/Player/ObjectTrail.gd" id="5_p5b07"]
+[ext_resource type="Script" path="res://Scenes/UI/heath_bar.gd" id="5_sstfl"]
 [ext_resource type="Texture2D" uid="uid://mni3i2jaf0s" path="res://Assets/Icons/steamdeck_dpad.png" id="5_y2f5t"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_meodc"]
@@ -16,6 +16,8 @@ height = 24.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_flhek"]
 radius = 5.0
 height = 26.0
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hu5g1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aeibh"]
 bg_color = Color(0, 0.721569, 0.337255, 1)
@@ -28,6 +30,28 @@ expand_margin_left = 1.0
 expand_margin_top = 1.0
 expand_margin_right = 1.0
 expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fcrsq"]
+bg_color = Color(0.0313726, 0.0862745, 0, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 1
+expand_margin_left = 3.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+shadow_color = Color(0, 0, 0, 0.266667)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w5ohl"]
+bg_color = Color(0.780392, 0.172549, 0.172549, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+corner_detail = 1
 
 [sub_resource type="Animation" id="Animation_jukvn"]
 length = 0.001
@@ -263,9 +287,10 @@ position = Vector2(0, -48)
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("3_a8wne")
 
-[node name="HeathBar" parent="Camera2D" instance=ExtResource("4_2c6ax")]
+[node name="HeathBar" type="ProgressBar" parent="Camera2D"]
 unique_name_in_owner = true
-self_modulate = Color(2, 1.5, 1.5, 1)
+modulate = Color(1.5, 1.5, 1.5, 1)
+z_index = 1
 offset_left = -213.0
 offset_top = 22.0
 offset_right = 88.0
@@ -273,10 +298,32 @@ offset_bottom = 34.0
 rotation = -1.5708
 scale = Vector2(0.158147, 0.494211)
 size_flags_horizontal = 0
+theme_override_styles/background = SubResource("StyleBoxEmpty_hu5g1")
 theme_override_styles/fill = SubResource("StyleBoxFlat_aeibh")
+value = 60.0
+show_percentage = false
+script = ExtResource("5_sstfl")
+
+[node name="DamageBar" type="ProgressBar" parent="Camera2D/HeathBar"]
+unique_name_in_owner = true
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_fcrsq")
+theme_override_styles/fill = SubResource("StyleBoxFlat_w5ohl")
+value = 80.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="Camera2D/HeathBar"]
+unique_name_in_owner = true
+wait_time = 0.4
 
 [node name="SteamdeckDpad" type="Sprite2D" parent="Camera2D/HeathBar"]
-modulate = Color(0, 1.1, 0.337, 1)
+modulate = Color(0, 0.721569, 0.337255, 1)
 z_index = 5
 position = Vector2(-44.2628, 6.07025)
 rotation = 1.57081
@@ -322,5 +369,6 @@ unique_name_in_owner = true
 wait_time = 0.4
 one_shot = true
 
+[connection signal="timeout" from="Camera2D/HeathBar/Timer" to="Camera2D/HeathBar" method="_on_timer_timeout"]
 [connection signal="timeout" from="DashDurantion" to="." method="_on_dash_durantion_timeout"]
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]
