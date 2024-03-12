@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://k7uj7aa54yyh"]
+[gd_scene load_steps=13 format=3 uid="uid://k7uj7aa54yyh"]
 
 [ext_resource type="PackedScene" uid="uid://dyw6lbmwpmdb3" path="res://Scenes/Logic/game_manager.tscn" id="1_52f01"]
 [ext_resource type="PackedScene" uid="uid://cprdctgkrpvbo" path="res://Scenes/VFX/SnowGeneratorCPU.tscn" id="2_0g361"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://cldxd32efc4gh" path="res://Scenes/Entities/eye_enemy.tscn" id="7_rwyoi"]
 [ext_resource type="PackedScene" uid="uid://cwo3p17l08hsm" path="res://Scenes/UI/GameOverScreen.tscn" id="7_y7ix1"]
 [ext_resource type="PackedScene" uid="uid://m5qqeskwgghk" path="res://Scenes/UI/pause_menu.tscn" id="8_eje1u"]
+[ext_resource type="PackedScene" uid="uid://sjnfodgfora7" path="res://Scenes/UI/YouWinScreen.tscn" id="8_tkbjy"]
 
 [sub_resource type="Curve2D" id="Curve2D_4rwd0"]
 
@@ -118,6 +119,10 @@ inactive_update_mode = 0
 environment = SubResource("Environment_5iead")
 
 [node name="UIelements" type="Node" parent="."]
+
+[node name="YouWinScreen" parent="UIelements" instance=ExtResource("8_tkbjy")]
+unique_name_in_owner = true
+visible = false
 
 [node name="GameOverScreen" parent="UIelements" instance=ExtResource("7_y7ix1")]
 unique_name_in_owner = true
