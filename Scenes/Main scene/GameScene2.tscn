@@ -185,4 +185,3 @@ offset_top = 576.0
 offset_right = 52.0
 offset_bottom = 597.0
 theme_override_fonts/font = ExtResource("17_rryut")
-text = "MOVE"
