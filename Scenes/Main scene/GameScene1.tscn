@@ -59,7 +59,7 @@ process_mode = 3
 [node name="GameManager" parent="Manager Container" instance=ExtResource("1_bsvju")]
 unique_name_in_owner = true
 open_door = true
-next_scene_path = "res://Scenes/Main scene/main_scene.tscn"
+next_scene_path = "res://Scenes/Main scene/GameScene2.tscn"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Manager Container"]
 environment = SubResource("Environment_5iead")

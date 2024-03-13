@@ -81,211 +81,215 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -37.0
+offset_top = -28.0
+offset_right = 80.0
+offset_bottom = 53.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jh2i8")
 
 [node name="Controls" type="Label" parent="Controls"]
 layout_mode = 2
-offset_left = 242.0
-offset_top = 15.0
-offset_right = 360.0
-offset_bottom = 36.0
+offset_left = 345.0
+offset_top = 97.0
+offset_right = 463.0
+offset_bottom = 118.0
 theme_override_fonts/font = ExtResource("1_fvnia")
 text = "CONTROLS"
 horizontal_alignment = 1
 
 [node name="SEPARATOR" type="Label" parent="Controls"]
 layout_mode = 2
-offset_left = 128.0
-offset_top = 15.0
-offset_right = 246.0
-offset_bottom = 36.0
+offset_left = 231.0
+offset_top = 97.0
+offset_right = 349.0
+offset_bottom = 118.0
 theme_override_fonts/font = ExtResource("1_fvnia")
 text = "//"
 horizontal_alignment = 1
 
+[node name="Jump" type="Label" parent="Controls"]
+layout_mode = 2
+offset_left = 311.0
+offset_top = 130.0
+offset_right = 368.0
+offset_bottom = 151.0
+theme_override_fonts/font = ExtResource("1_fvnia")
+text = "JUMP"
+
+[node name="SwitchButtonsDownOutline" type="Sprite2D" parent="Controls"]
+position = Vector2(318.868, 154.199)
+scale = Vector2(0.122943, 0.122943)
+texture = ExtResource("16_uripk")
+
+[node name="KeyboardZ" type="Sprite2D" parent="Controls"]
+position = Vector2(334.868, 154.199)
+scale = Vector2(0.124321, 0.124321)
+texture = ExtResource("13_aarcg")
+
+[node name="KeyboardArrowsUpOutline" type="Sprite2D" parent="Controls"]
+position = Vector2(382.868, 154.199)
+scale = Vector2(0.128114, 0.128114)
+texture = ExtResource("8_xpxrr")
+
+[node name="KeyboardJ" type="Sprite2D" parent="Controls"]
+position = Vector2(350.868, 154.199)
+scale = Vector2(0.126702, 0.126702)
+texture = ExtResource("10_g6s16")
+
+[node name="KeyboardW" type="Sprite2D" parent="Controls"]
+position = Vector2(366.868, 154.199)
+scale = Vector2(0.121213, 0.121213)
+texture = ExtResource("9_1t8y4")
+
+[node name="KeyboardSpace" type="Sprite2D" parent="Controls"]
+position = Vector2(399, 154)
+scale = Vector2(0.125008, 0.125008)
+texture = ExtResource("20_62roc")
+
 [node name="Move" type="Label" parent="Controls"]
 layout_mode = 2
-offset_left = 360.0
-offset_top = 48.0
-offset_right = 440.0
-offset_bottom = 69.0
+offset_left = 463.0
+offset_top = 130.0
+offset_right = 543.0
+offset_bottom = 151.0
 theme_override_fonts/font = ExtResource("1_fvnia")
 text = "MOVE"
 
 [node name="KeyboardA" type="Sprite2D" parent="Controls"]
-position = Vector2(368, 72)
+position = Vector2(471, 154)
 scale = Vector2(0.125651, 0.125651)
 texture = ExtResource("3_01unj")
 
 [node name="KeyboardD" type="Sprite2D" parent="Controls"]
-position = Vector2(384, 72)
+position = Vector2(487, 154)
 scale = Vector2(0.123643, 0.123643)
 texture = ExtResource("4_xur7j")
 
 [node name="SwitchDpadHorizontalOutline" type="Sprite2D" parent="Controls"]
-position = Vector2(400, 72)
+position = Vector2(503, 154)
 scale = Vector2(0.127154, 0.127154)
 texture = ExtResource("5_t47yh")
 
 [node name="SteamdeckStickLHorizontal" type="Sprite2D" parent="Controls"]
-position = Vector2(416, 72)
+position = Vector2(519, 154)
 scale = Vector2(0.12499, 0.12499)
 texture = ExtResource("6_4ha5c")
 
 [node name="KeyboardArrowsHorizontalOutline" type="Sprite2D" parent="Controls"]
-position = Vector2(432, 72)
+position = Vector2(535, 154)
 scale = Vector2(0.123593, 0.123593)
 texture = ExtResource("7_qtk3d")
 
 [node name="Attack" type="Label" parent="Controls"]
 layout_mode = 2
-offset_left = 360.0
-offset_top = 120.0
-offset_right = 440.0
-offset_bottom = 141.0
+offset_left = 463.0
+offset_top = 224.0
+offset_right = 543.0
+offset_bottom = 245.0
 theme_override_fonts/font = ExtResource("1_fvnia")
 text = "ATTACK"
 
 [node name="KeyboardK" type="Sprite2D" parent="Controls"]
-position = Vector2(384.024, 144.024)
+position = Vector2(487.024, 248.024)
 scale = Vector2(0.123693, 0.123693)
 texture = ExtResource("14_y8ieu")
 
 [node name="SwitchButtonsLeftOutline" type="Sprite2D" parent="Controls"]
-position = Vector2(368.024, 144.024)
+position = Vector2(471.024, 248.024)
 scale = Vector2(0.125375, 0.125375)
 texture = ExtResource("9_77pfw")
 
 [node name="KeyboardX" type="Sprite2D" parent="Controls"]
-position = Vector2(400.024, 144.024)
+position = Vector2(503.024, 248.024)
 scale = Vector2(0.124491, 0.124491)
 texture = ExtResource("9_aixkr")
 
 [node name="MouseLeftOutline" type="Sprite2D" parent="Controls"]
-position = Vector2(416.024, 144.024)
+position = Vector2(519.024, 248.024)
 scale = Vector2(0.122041, 0.122041)
 texture = ExtResource("10_gdahw")
 
-[node name="Restart" type="Label" parent="Controls"]
-layout_mode = 2
-offset_left = 360.145
-offset_top = 184.0
-offset_right = 440.145
-offset_bottom = 205.0
-theme_override_fonts/font = ExtResource("1_fvnia")
-text = "RESTART"
-
-[node name="Playstation3ButtonSelect" type="Sprite2D" parent="Controls"]
-position = Vector2(400.145, 208)
-scale = Vector2(0.12684, 0.12684)
-texture = ExtResource("21_fg5rs")
-
-[node name="KeyboardF5" type="Sprite2D" parent="Controls"]
-position = Vector2(368.145, 208)
-scale = Vector2(0.128569, 0.128569)
-texture = ExtResource("8_3gk24")
-
-[node name="KeyboardR" type="Sprite2D" parent="Controls"]
-position = Vector2(384.145, 208)
-scale = Vector2(0.125835, 0.125835)
-texture = ExtResource("12_1oov4")
-
-[node name="Jump" type="Label" parent="Controls"]
-layout_mode = 2
-offset_left = 208.0
-offset_top = 48.0
-offset_right = 265.0
-offset_bottom = 69.0
-theme_override_fonts/font = ExtResource("1_fvnia")
-text = "JUMP"
-
-[node name="SwitchButtonsDownOutline" type="Sprite2D" parent="Controls"]
-position = Vector2(215.868, 72.1993)
-scale = Vector2(0.122943, 0.122943)
-texture = ExtResource("16_uripk")
-
-[node name="KeyboardZ" type="Sprite2D" parent="Controls"]
-position = Vector2(231.868, 72.1993)
-scale = Vector2(0.124321, 0.124321)
-texture = ExtResource("13_aarcg")
-
-[node name="KeyboardArrowsUpOutline" type="Sprite2D" parent="Controls"]
-position = Vector2(279.868, 72.1993)
-scale = Vector2(0.128114, 0.128114)
-texture = ExtResource("8_xpxrr")
-
-[node name="KeyboardJ" type="Sprite2D" parent="Controls"]
-position = Vector2(247.868, 72.1993)
-scale = Vector2(0.126702, 0.126702)
-texture = ExtResource("10_g6s16")
-
-[node name="KeyboardW" type="Sprite2D" parent="Controls"]
-position = Vector2(263.868, 72.1993)
-scale = Vector2(0.121213, 0.121213)
-texture = ExtResource("9_1t8y4")
-
-[node name="KeyboardSpace" type="Sprite2D" parent="Controls"]
-position = Vector2(296, 72)
-scale = Vector2(0.125008, 0.125008)
-texture = ExtResource("20_62roc")
-
 [node name="Dash" type="Label" parent="Controls"]
 layout_mode = 2
-offset_left = 208.0
-offset_top = 120.0
-offset_right = 265.0
-offset_bottom = 141.0
+offset_left = 311.0
+offset_top = 224.0
+offset_right = 368.0
+offset_bottom = 245.0
 theme_override_fonts/font = ExtResource("1_fvnia")
 text = "DASH"
 
 [node name="SwitchButtonsRightOutline" type="Sprite2D" parent="Controls"]
-position = Vector2(216.017, 144.079)
+position = Vector2(319.017, 248.079)
 scale = Vector2(0.125259, 0.125259)
 texture = ExtResource("21_3pr3g")
 
 [node name="XboxRt" type="Sprite2D" parent="Controls"]
-position = Vector2(232.017, 144.079)
+position = Vector2(335.017, 248.079)
 scale = Vector2(0.126239, 0.126239)
 texture = ExtResource("22_7hv88")
 
 [node name="KeyboardC" type="Sprite2D" parent="Controls"]
-position = Vector2(263.943, 144.099)
+position = Vector2(366.943, 248.099)
 scale = Vector2(0.125309, 0.125309)
 texture = ExtResource("10_gydik")
 
 [node name="KeyboardL" type="Sprite2D" parent="Controls"]
-position = Vector2(247.943, 144.099)
+position = Vector2(350.943, 248.099)
 scale = Vector2(0.123858, 0.123858)
 texture = ExtResource("14_q4mf8")
 
 [node name="MouseRightOutline" type="Sprite2D" parent="Controls"]
-position = Vector2(280.017, 144.079)
+position = Vector2(383.017, 248.079)
 scale = Vector2(0.125293, 0.125293)
 texture = ExtResource("19_qyedj")
 
+[node name="Restart" type="Label" parent="Controls"]
+layout_mode = 2
+offset_left = 463.145
+offset_top = 315.0
+offset_right = 543.145
+offset_bottom = 336.0
+theme_override_fonts/font = ExtResource("1_fvnia")
+text = "RESTART"
+
+[node name="Playstation3ButtonSelect" type="Sprite2D" parent="Controls"]
+position = Vector2(503.145, 339)
+scale = Vector2(0.12684, 0.12684)
+texture = ExtResource("21_fg5rs")
+
+[node name="KeyboardF5" type="Sprite2D" parent="Controls"]
+position = Vector2(471.145, 339)
+scale = Vector2(0.128569, 0.128569)
+texture = ExtResource("8_3gk24")
+
+[node name="KeyboardR" type="Sprite2D" parent="Controls"]
+position = Vector2(487.145, 339)
+scale = Vector2(0.125835, 0.125835)
+texture = ExtResource("12_1oov4")
+
 [node name="Pause" type="Label" parent="Controls"]
 layout_mode = 2
-offset_left = 208.145
-offset_top = 184.0
-offset_right = 358.145
-offset_bottom = 205.0
+offset_left = 311.145
+offset_top = 315.0
+offset_right = 461.145
+offset_bottom = 336.0
 theme_override_fonts/font = ExtResource("1_fvnia")
 text = "PAUSE"
 
 [node name="KeyboardP" type="Sprite2D" parent="Controls"]
-position = Vector2(248, 208)
+position = Vector2(351, 339)
 scale = Vector2(0.127387, 0.126386)
 texture = ExtResource("27_xf8ub")
 
 [node name="XboxButtonStart" type="Sprite2D" parent="Controls"]
-position = Vector2(232.145, 208)
+position = Vector2(335.145, 339)
 scale = Vector2(0.12527, 0.12527)
 texture = ExtResource("27_fqbrl")
 
 [node name="KeyboardEscape" type="Sprite2D" parent="Controls"]
-position = Vector2(216.145, 208)
+position = Vector2(319.145, 339)
 scale = Vector2(0.127268, 0.127268)
 texture = ExtResource("11_sof87")
 
