@@ -284,6 +284,7 @@ shape = SubResource("CapsuleShape2D_axkgq")
 
 [node name="Background" type="CanvasLayer" parent="."]
 layer = -1
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="Background"]
 anchors_preset = 15

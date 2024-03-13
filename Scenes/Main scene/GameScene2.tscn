@@ -1,8 +1,9 @@
-[gd_scene load_steps=16 format=3 uid="uid://bxwpthirfhvu1"]
+[gd_scene load_steps=17 format=3 uid="uid://bxwpthirfhvu1"]
 
 [ext_resource type="PackedScene" uid="uid://dyw6lbmwpmdb3" path="res://Scenes/Logic/game_manager.tscn" id="1_vh107"]
 [ext_resource type="PackedScene" uid="uid://db4ivmgtxggnu" path="res://Scenes/TileMaps/my_tile_map1.tscn" id="2_kch4r"]
 [ext_resource type="PackedScene" uid="uid://cohaf6ch0vmw" path="res://Scenes/Interactables/portal.tscn" id="3_bu1nx"]
+[ext_resource type="PackedScene" uid="uid://d0ael7lg5y754" path="res://Scenes/objects/moving_platform.tscn" id="3_qpw2d"]
 [ext_resource type="PackedScene" uid="uid://bubsfc3tvkdsb" path="res://Scenes/Player/my_player.tscn" id="4_rlp64"]
 [ext_resource type="PackedScene" uid="uid://cprdctgkrpvbo" path="res://Scenes/VFX/SnowGeneratorCPU.tscn" id="5_ej83p"]
 [ext_resource type="PackedScene" uid="uid://conia6omml2ck" path="res://Scenes/Logic/path_follow_2d.tscn" id="6_iu6oa"]
@@ -22,9 +23,9 @@ adjustment_brightness = 0.4
 adjustment_contrast = 1.05
 adjustment_saturation = 8.0
 
-[sub_resource type="Curve2D" id="Curve2D_t11c3"]
+[sub_resource type="Curve2D" id="Curve2D_rsn2d"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -829, 708, 0, 0, 0, 0, -376, 709, 0, 0, 0, 0, -349, 704, 0, 0, 0, 0, -829, 708)
+"points": PackedVector2Array(0, 0, 0, 0, -257, 589, 0, 0, 0, 0, -104, 589, 0, 0, 0, 0, -63, 581, 0, 0, 0, 0, -257, 589)
 }
 point_count = 4
 
@@ -65,20 +66,25 @@ layer_0/tile_data = PackedInt32Array(1965938, 1, 1, 2031474, 1, 1, 2097010, 1, 1
 
 [node name="Platforms" type="Node2D" parent="LevelsContainer/Tiles"]
 
-[node name="Path2D" type="Path2D" parent="LevelsContainer/Tiles/Platforms"]
-curve = SubResource("Curve2D_t11c3")
+[node name="MovingPlatform" parent="LevelsContainer/Tiles/Platforms" instance=ExtResource("3_qpw2d")]
+position = Vector2(-326, 651)
 
-[node name="PathFollow2D" parent="LevelsContainer/Tiles/Platforms/Path2D" instance=ExtResource("6_iu6oa")]
-position = Vector2(-771.863, 708.126)
-progress = 57.1484
+[node name="platform1" type="Node2D" parent="LevelsContainer/Tiles/Platforms"]
+position = Vector2(-371, 104)
 
-[node name="Glow Purple2" parent="LevelsContainer/Tiles/Platforms/Path2D/PathFollow2D" instance=ExtResource("2_kch4r")]
+[node name="Path2D" type="Path2D" parent="LevelsContainer/Tiles/Platforms/platform1"]
+curve = SubResource("Curve2D_rsn2d")
+
+[node name="PathFollow2D" parent="LevelsContainer/Tiles/Platforms/platform1/Path2D" instance=ExtResource("6_iu6oa")]
+position = Vector2(-257, 589)
+
+[node name="Glow Purple" parent="LevelsContainer/Tiles/Platforms/platform1/Path2D/PathFollow2D" instance=ExtResource("2_kch4r")]
 modulate = Color(4, 1.5, 2, 1)
-rotation = -0.00290755
-layer_0/tile_data = PackedInt32Array(2, 131073, 3, 1, 65537, 3, 0, 65537, 3, 65535, 65537, 3, 65534, 65537, 3, 65533, 1, 3)
+rotation = -0.00511505
+layer_0/tile_data = PackedInt32Array(1, 131073, 3, 0, 65537, 3, 65535, 65537, 3, 65534, 1, 3)
 
 [node name="Glow Purple" parent="LevelsContainer/Tiles" instance=ExtResource("2_kch4r")]
-modulate = Color(4, 1.5, 2, 1)
+modulate = Color(4, 1.5, 1.999, 0.998)
 
 [node name="Glow Green" parent="LevelsContainer/Tiles" instance=ExtResource("2_kch4r")]
 modulate = Color(1, 1.714, 1, 1)
