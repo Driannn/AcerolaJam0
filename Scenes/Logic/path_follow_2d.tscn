@@ -1,12 +1,12 @@
 [gd_scene load_steps=2 format=3 uid="uid://conia6omml2ck"]
 
-[ext_resource type="Script" path="res://Scenes/Main scene/PathFollow2D.gd" id="1_jbj2e"]
+[ext_resource type="Script" path="res://Scenes/PathFollow2D.gd" id="1_jbj2e"]
 
 [node name="PathFollow2D" type="PathFollow2D"]
-position = Vector2(515, 151)
 rotation = 0.00511505
 rotates = false
 script = ExtResource("1_jbj2e")
+speed = 0.2
 
 [node name="_Timer_27314" type="Timer" parent="."]
 wait_time = 0.2
