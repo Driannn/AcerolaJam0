@@ -86,7 +86,7 @@ func _physics_process(delta):
 ##Get players input
 func get_movement_input() -> float:
 	
-	if Input.is_action_just_pressed("dash") and can_dash and velocity.x != 0:
+	if Input.is_action_just_pressed("dash") and can_dash:
 		dashing = true
 		can_dash = false
 		dash_durantion.start()
@@ -98,9 +98,10 @@ func move_on_x(delta : float) -> void:
 	var horizontal_direction = get_movement_input()
 	
 	if dashing:
-		if horizontal_direction < 0:
+		if !sprite.flip_h:
 			velocity.x = dash_speed * -1 * delta * 50
-		elif horizontal_direction > 0:
+			print("truesi")
+		else:
 			velocity.x = dash_speed * 1 * delta * 50
 		velocity.y = 0
 	else:
@@ -113,14 +114,14 @@ func sprite_flip(horizontal_direction):
 	#If the player is moving
 	if horizontal_direction != 0:
 		#flip the sprite if the direction is left and go back to normal if direction is right
-		sprite.flip_h = horizontal_direction < 0
+		sprite.flip_h = horizontal_direction > 0
 		flip_sword()
 		
 func flip_sword():
 	if sprite.flip_h:
-		sword.scale.x = -1
-	else:
 		sword.scale.x = 1
+	else:
+		sword.scale.x = -1
 
 ##Apply force to the Y velocity if the player is not on the floor
 func apply_gravity(delta : float) -> void:
@@ -154,7 +155,7 @@ func update_animations(horizontal_direction : float) -> void:
 	if is_on_floor():
 		if horizontal_direction == 0:
 			ap.play("idle")
-		else:
+		elif horizontal_direction != 0 or dashing:
 			ap.play("run")
 	elif velocity.y < 0:
 		ap.play("jump")

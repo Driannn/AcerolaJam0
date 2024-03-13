@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://Scenes/Entities/EnemyHurtBox.gd" id="3_xf7gy"]
 [ext_resource type="Script" path="res://Scenes/Entities/EnemyHitBox.gd" id="4_o33od"]
 [ext_resource type="PackedScene" uid="uid://4far1tugdhd" path="res://Scenes/UI/heath_bar.tscn" id="4_qwtri"]
-[ext_resource type="Texture2D" uid="uid://mni3i2jaf0s" path="res://Assets/Icons/steamdeck_dpad.png" id="7_hw0co"]
+[ext_resource type="Texture2D" path="res://Assets/Icons/steamdeck_dpad.png" id="7_hw0co"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_40hdv"]
 radius = 28.0
