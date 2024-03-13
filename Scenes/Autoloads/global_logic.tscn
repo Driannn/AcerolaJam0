@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cd8cub4xb4si0"]
+
+[ext_resource type="Script" path="res://Scenes/Autoloads/GlobalLogic.gd" id="1_1xsqs"]
+
+[node name="GlobaLogic" type="Node"]
+script = ExtResource("1_1xsqs")

@@ -1,6 +1,6 @@
 extends Node
 
-@export var main_music_loop = preload("res://Assets/Audio/Idea #2_fuzz 808_200bpm_loopable.ogg")
+@onready var main_music_loop = preload("res://Assets/Audio/Idea #2_fuzz 808_200bpm_loopable.ogg")
 @onready var music_player = $MusicPlayer
 var is_music_playing := false
 

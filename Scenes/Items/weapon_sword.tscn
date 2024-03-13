@@ -55,6 +55,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/Sprite2D/Node2D/MyTrails:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_dtlxl"]
 resource_name = "idle"
@@ -95,10 +107,10 @@ tracks/0/path = NodePath("Node2D:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15),
-"transitions": PackedFloat32Array(0.34151, 0.34151),
+"times": PackedFloat32Array(0, 0.025, 0.15),
+"transitions": PackedFloat32Array(1, 0.34151, 0.34151),
 "update": 0,
-"values": [-0.502655, 1.89194]
+"values": [-0.150098, -0.502655, 1.89194]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -124,6 +136,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/Sprite2D/Node2D/MyTrails:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cgnky"]
 _data = {
@@ -140,7 +164,7 @@ position = Vector2(5, 8)
 
 [node name="Sprite2D" type="Sprite2D" parent="Node2D"]
 unique_name_in_owner = true
-modulate = Color(1.2, 1.2, 1.2, 1)
+modulate = Color(1.1, 1.1, 1.2, 1)
 position = Vector2(7, -8)
 texture = ExtResource("1_p2esc")
 
@@ -148,15 +172,14 @@ texture = ExtResource("1_p2esc")
 position = Vector2(4, -5)
 
 [node name="MyTrails" type="Line2D" parent="Node2D/Sprite2D/Node2D"]
-modulate = Color(1.1, 1.1, 1.1, 1)
+modulate = Color(1, 1, 1.2, 1)
 top_level = true
 z_index = -1
 points = PackedVector2Array(19, -9)
-width = 8.0
+width = 16.205
 width_curve = SubResource("Curve_1h4us")
 gradient = SubResource("Gradient_7mled")
 script = ExtResource("4_dm5yi")
-max_lenght = 15
 keep_drawning = true
 
 [node name="MyHitBox" type="Area2D" parent="Node2D/Sprite2D"]

@@ -4,6 +4,11 @@ class_name GameManager
 @onready var player = %MyPlayer
 @onready var game_over_screen = %GameOverScreen
 @onready var pause_menu = %PauseMenu
+@onready var max_enemies : int = %Enemies.get_child_count()
+@onready var you_win_screen = %YouWinScreen
+
+var current_enemy_count : int
+var win : bool
 
 #pause game tutorial
 #https://www.youtube.com/watch?v=OWtwYp2lIlQ
@@ -18,17 +23,28 @@ var game_paused : bool = false:
 		emit_signal("toggle_game_paused", game_paused)
 
 func _process(_delta):
+	current_enemy_count = %Enemies.get_child_count()
+	if current_enemy_count == 0:
+		win = true
+	
+	if win and !game_paused:
+		you_win_screen.visible = true
+	elif game_paused:
+		you_win_screen.visible = false
+
 	
 	if !MusicController.is_music_playing:
 		MusicController.play_music()
 	
-	if game_paused:
+	if game_paused or player.is_dead or win:
 		MusicController.pitch_down()
 	else:
 		MusicController.reset_pitch()
 	
-	if player.is_dead:
-		show_game_over_screen()
+	if player.is_dead and !game_paused:
+		game_over_screen.visible = true
+	elif game_paused:
+		game_over_screen.visible = false
 	
 	restart_scene()
 
