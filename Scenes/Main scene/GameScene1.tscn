@@ -294,10 +294,10 @@ texture = ExtResource("26_o6xuq")
 [node name="PauseControl" type="Control" parent="TextOnScreen"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -118.0
-offset_top = -36.0
-offset_right = -78.0
-offset_bottom = 4.0
+offset_left = -30.0
+offset_top = -1.0
+offset_right = 10.0
+offset_bottom = 39.0
 
 [node name="Pause" type="Label" parent="TextOnScreen/PauseControl"]
 layout_mode = 0
