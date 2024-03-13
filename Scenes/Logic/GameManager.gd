@@ -48,16 +48,18 @@ func _process(_delta):
 	
 	restart_scene()
 
+##pause game, get input and change bool variable
 func _input(event : InputEvent):
 	if(event.is_action_pressed("pause")):
 		game_paused = !game_paused
-		print("Game Paused")
+		#print("Game Paused")
 
 ##restart on R
 func restart_scene():
 	if Input.is_action_just_pressed("restart"):
 		get_tree().reload_current_scene()
 
+#Turn visible the game over canvas layer
 func show_game_over_screen():
 	game_over_screen.visible = true
 	
