@@ -6,6 +6,10 @@ class_name GameManager
 @onready var pause_menu = %PauseMenu
 @onready var max_enemies : int = %Enemies.get_child_count()
 @onready var you_win_screen = %YouWinScreen
+@onready var glow_red = %"Glow Red"
+
+@export var open_door := false
+@export var win_screen := false
 
 var current_enemy_count : int
 var win : bool
@@ -27,11 +31,13 @@ func _process(_delta):
 	if current_enemy_count == 0:
 		win = true
 	
-	if win and !game_paused:
+	if win and !game_paused and win_screen:
 		you_win_screen.visible = true
 	elif game_paused:
 		you_win_screen.visible = false
-
+	
+	if win and glow_red != null:
+		glow_red.queue_free()
 	
 	if !MusicController.is_music_playing:
 		MusicController.play_music()

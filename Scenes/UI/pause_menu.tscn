@@ -22,12 +22,12 @@
 [ext_resource type="Texture2D" uid="uid://dhkyyie4rj8lp" path="res://Assets/Icons/keyboard_k.png" id="14_y8ieu"]
 [ext_resource type="Texture2D" uid="uid://bm25o28jeyn3l" path="res://Assets/Icons/switch_buttons_down_outline.png" id="16_uripk"]
 [ext_resource type="Texture2D" uid="uid://d2jjjpjbjva5l" path="res://Assets/Icons/mouse_right_outline.png" id="19_qyedj"]
-[ext_resource type="Texture2D" path="res://Assets/Icons/keyboard_space.png" id="20_62roc"]
+[ext_resource type="Texture2D" uid="uid://r4h6r7kc8268" path="res://Assets/Icons/keyboard_space.png" id="20_62roc"]
 [ext_resource type="Texture2D" uid="uid://cy2y6wwjv5x42" path="res://Assets/Icons/switch_buttons_right_outline.png" id="21_3pr3g"]
 [ext_resource type="Texture2D" uid="uid://cv68r16exemex" path="res://Assets/Icons/playstation3_button_select.png" id="21_fg5rs"]
 [ext_resource type="Texture2D" uid="uid://bxps10jd0cvpu" path="res://Assets/Icons/xbox_rt.png" id="22_7hv88"]
 [ext_resource type="Texture2D" uid="uid://lfjhb51kkdrw" path="res://Assets/Icons/xbox_button_start.png" id="27_fqbrl"]
-[ext_resource type="Texture2D" path="res://Assets/Icons/keyboard_p.png" id="27_xf8ub"]
+[ext_resource type="Texture2D" uid="uid://detfy8k5xkoxq" path="res://Assets/Icons/keyboard_p.png" id="27_xf8ub"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jh2i8"]
 bg_color = Color(0, 0, 0, 0.917647)

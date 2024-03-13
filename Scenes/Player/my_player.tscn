@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://3rebuh30qoem" path="res://Scenes/Items/weapon_sword.tscn" id="4_kf80v"]
 [ext_resource type="Script" path="res://Scenes/Player/ObjectTrail.gd" id="5_p5b07"]
 [ext_resource type="Script" path="res://Scenes/UI/heath_bar.gd" id="5_sstfl"]
-[ext_resource type="Texture2D" path="res://Assets/Icons/steamdeck_dpad.png" id="5_y2f5t"]
+[ext_resource type="Texture2D" uid="uid://mni3i2jaf0s" path="res://Assets/Icons/steamdeck_dpad.png" id="5_y2f5t"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_meodc"]
 radius = 5.0
