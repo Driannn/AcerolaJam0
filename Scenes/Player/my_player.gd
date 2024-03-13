@@ -49,6 +49,9 @@ extends CharacterBody2D
 @onready var dash_durantion = %DashDurantion
 ##Dash cooldown
 @onready var dash_cooldown = %DashCooldown
+##Reference to GameManager Node
+@onready var game_manager = $"../../Manager Container/GameManager"
+
 
 #endregion
 
@@ -100,7 +103,6 @@ func move_on_x(delta : float) -> void:
 	if dashing:
 		if !sprite.flip_h:
 			velocity.x = dash_speed * -1 * delta * 50
-			print("truesi")
 		else:
 			velocity.x = dash_speed * 1 * delta * 50
 		velocity.y = 0
@@ -202,3 +204,8 @@ func _on_dash_durantion_timeout():
 
 func _on_dash_cooldown_timeout():
 	can_dash = true
+
+
+func _on_trigger_area_entered(area):
+	print_debug(area.name, "Portal Activado")
+	game_manager.load_next_scene()

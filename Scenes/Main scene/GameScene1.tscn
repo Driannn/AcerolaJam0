@@ -58,6 +58,8 @@ process_mode = 3
 
 [node name="GameManager" parent="Manager Container" instance=ExtResource("1_bsvju")]
 unique_name_in_owner = true
+open_door = true
+next_scene_path = "res://Scenes/Main scene/main_scene.tscn"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Manager Container"]
 environment = SubResource("Environment_5iead")
@@ -93,7 +95,6 @@ process_mode = 1
 [node name="MyPlayer" parent="EntityContainer" instance=ExtResource("3_n2uhn")]
 unique_name_in_owner = true
 process_mode = 1
-position = Vector2(-2034, 489)
 
 [node name="CPUParticles2D" parent="EntityContainer/MyPlayer" instance=ExtResource("4_yglou")]
 process_mode = 3
@@ -121,7 +122,7 @@ speed = 0.05
 process_mode = 1
 
 [node name="OnPlayerCamera" type="Node2D" parent="Cameras"]
-position = Vector2(-2027.96, 457)
+position = Vector2(6.035, -32)
 script = ExtResource("7_ihqu1")
 priority_override = false
 priority = 5
@@ -149,10 +150,12 @@ inactive_update_mode = 0
 [node name="YouWinScreen" parent="UIelements" instance=ExtResource("8_24ffi")]
 unique_name_in_owner = true
 visible = false
+script = null
 
 [node name="GameOverScreen" parent="UIelements" instance=ExtResource("9_r6fys")]
 unique_name_in_owner = true
 visible = false
+script = null
 
 [node name="CanvasLayer" type="CanvasLayer" parent="UIelements"]
 
@@ -288,13 +291,15 @@ position = Vector2(-608, 608)
 scale = Vector2(0.125293, 0.125293)
 texture = ExtResource("26_o6xuq")
 
-[node name="Control" type="Control" parent="TextOnScreen"]
+[node name="PauseControl" type="Control" parent="TextOnScreen"]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -118.0
+offset_top = -36.0
+offset_right = -78.0
+offset_bottom = 4.0
 
-[node name="Pause" type="Label" parent="TextOnScreen/Control"]
+[node name="Pause" type="Label" parent="TextOnScreen/PauseControl"]
 layout_mode = 0
 offset_left = 272.145
 offset_top = 752.0
@@ -303,17 +308,17 @@ offset_bottom = 773.0
 theme_override_fonts/font = ExtResource("11_sossw")
 text = "PAUSE"
 
-[node name="KeyboardP" type="Sprite2D" parent="TextOnScreen/Control"]
+[node name="KeyboardP" type="Sprite2D" parent="TextOnScreen/PauseControl"]
 position = Vector2(312, 776)
 scale = Vector2(0.127387, 0.126386)
 texture = ExtResource("27_thc1j")
 
-[node name="XboxButtonStart" type="Sprite2D" parent="TextOnScreen/Control"]
+[node name="XboxButtonStart" type="Sprite2D" parent="TextOnScreen/PauseControl"]
 position = Vector2(296.145, 776)
 scale = Vector2(0.12527, 0.12527)
 texture = ExtResource("28_phkhy")
 
-[node name="KeyboardEscape" type="Sprite2D" parent="TextOnScreen/Control"]
+[node name="KeyboardEscape" type="Sprite2D" parent="TextOnScreen/PauseControl"]
 position = Vector2(280.145, 776)
 scale = Vector2(0.127268, 0.127268)
 texture = ExtResource("29_vdtug")

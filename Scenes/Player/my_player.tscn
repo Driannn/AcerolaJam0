@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bubsfc3tvkdsb"]
+[gd_scene load_steps=26 format=3 uid="uid://bubsfc3tvkdsb"]
 
 [ext_resource type="Texture2D" uid="uid://clh5e1uwbbtv0" path="res://Assets/Character/AnimationSheet_Character_byPenzilla.png" id="1_8w7mu"]
 [ext_resource type="Script" path="res://Scenes/Player/my_player.gd" id="1_ggs3h"]
@@ -16,6 +16,8 @@ height = 24.0
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_flhek"]
 radius = 5.0
 height = 26.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_axkgq"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hu5g1"]
 
@@ -247,7 +249,8 @@ gravity_max_speed = 700.0
 [node name="Sprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(0, -16)
-scale = Vector2(-1, 1)
+rotation = 3.14159
+scale = Vector2(1, -1)
 texture = ExtResource("1_8w7mu")
 hframes = 8
 vframes = 9
@@ -265,9 +268,17 @@ shape = SubResource("CapsuleShape2D_meodc")
 debug_color = Color(0.831373, 0, 0.945098, 0.419608)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -14)
 shape = SubResource("CapsuleShape2D_flhek")
+
+[node name="Trigger" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Trigger"]
+position = Vector2(0, -15)
+shape = SubResource("CapsuleShape2D_axkgq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -371,6 +382,7 @@ unique_name_in_owner = true
 wait_time = 0.4
 one_shot = true
 
+[connection signal="area_entered" from="Trigger" to="." method="_on_trigger_area_entered"]
 [connection signal="timeout" from="Camera2D/HeathBar/Timer" to="Camera2D/HeathBar" method="_on_timer_timeout"]
 [connection signal="timeout" from="DashDurantion" to="." method="_on_dash_durantion_timeout"]
 [connection signal="timeout" from="DashCooldown" to="." method="_on_dash_cooldown_timeout"]

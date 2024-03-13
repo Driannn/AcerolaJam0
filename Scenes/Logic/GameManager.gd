@@ -10,6 +10,7 @@ class_name GameManager
 
 @export var open_door := false
 @export var win_screen := false
+@export var next_scene_path : String
 
 var current_enemy_count : int
 var win : bool
@@ -36,7 +37,7 @@ func _process(_delta):
 	elif game_paused:
 		you_win_screen.visible = false
 	
-	if win and glow_red != null:
+	if win and open_door and glow_red != null:
 		glow_red.queue_free()
 	
 	if !MusicController.is_music_playing:
@@ -64,6 +65,9 @@ func _input(event : InputEvent):
 func restart_scene():
 	if Input.is_action_just_pressed("restart"):
 		get_tree().reload_current_scene()
+
+func load_next_scene():
+	get_tree().change_scene_to_file(next_scene_path)
 
 #Turn visible the game over canvas layer
 func show_game_over_screen():
