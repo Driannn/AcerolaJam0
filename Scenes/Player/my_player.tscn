@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bubsfc3tvkdsb"]
+[gd_scene load_steps=27 format=3 uid="uid://bubsfc3tvkdsb"]
 
 [ext_resource type="Texture2D" uid="uid://clh5e1uwbbtv0" path="res://Assets/Character/AnimationSheet_Character_byPenzilla.png" id="1_8w7mu"]
 [ext_resource type="Script" path="res://Scenes/Player/my_player.gd" id="1_ggs3h"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Scenes/Player/ObjectTrail.gd" id="5_p5b07"]
 [ext_resource type="Script" path="res://Scenes/UI/heath_bar.gd" id="5_sstfl"]
 [ext_resource type="Texture2D" uid="uid://mni3i2jaf0s" path="res://Assets/Icons/steamdeck_dpad.png" id="5_y2f5t"]
+[ext_resource type="AudioStream" uid="uid://bgltpx4dym85l" path="res://Assets/Audio/AcerolaJam0_sfx_hurt.wav" id="9_qksvi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_meodc"]
 radius = 5.0
@@ -93,6 +94,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Audio/AudioStreamPlayer2D:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_xc72h"]
 resource_name = "dead"
@@ -153,6 +166,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [Color(6, 6, 6, 0.103), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio/AudioStreamPlayer2D:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.075),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_ujvcn"]
@@ -382,6 +407,12 @@ one_shot = true
 unique_name_in_owner = true
 wait_time = 0.4
 one_shot = true
+
+[node name="Audio" type="Node2D" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("9_qksvi")
+pitch_scale = 0.36
 
 [connection signal="area_entered" from="Trigger" to="." method="_on_trigger_area_entered"]
 [connection signal="timeout" from="Camera2D/HeathBar/Timer" to="Camera2D/HeathBar" method="_on_timer_timeout"]
