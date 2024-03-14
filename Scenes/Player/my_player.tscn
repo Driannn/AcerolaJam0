@@ -1,7 +1,7 @@
 [gd_scene load_steps=38 format=3 uid="uid://bubsfc3tvkdsb"]
 
-[ext_resource type="Texture2D" uid="uid://clh5e1uwbbtv0" path="res://Assets/Character/AnimationSheet_Character_byPenzilla.png" id="1_8w7mu"]
 [ext_resource type="Script" path="res://Scenes/Player/my_player.gd" id="1_ggs3h"]
+[ext_resource type="Texture2D" uid="uid://fbhkmgpblsyu" path="res://Assets/Character/My_AnimationSheet_Character_Moded.png" id="2_c2n0w"]
 [ext_resource type="Script" path="res://Scenes/Player/PlayerHurtBox.gd" id="3_3swkq"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="3_a8wne"]
 [ext_resource type="PackedScene" uid="uid://3rebuh30qoem" path="res://Scenes/Items/weapon_sword.tscn" id="4_kf80v"]
@@ -326,8 +326,8 @@ metadata/_snap_enabled = true
 metadata/_snap_count = 20
 
 [sub_resource type="Gradient" id="Gradient_l3qge"]
-offsets = PackedFloat32Array(0.392308, 0.984615)
-colors = PackedColorArray(0, 0.128971, 0.128971, 1, 0, 0.129412, 0.129412, 0)
+offsets = PackedFloat32Array(0.393258, 0.984615)
+colors = PackedColorArray(0.92549, 0.278431, 0.294118, 1, 0, 0.129412, 0.129412, 0)
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pmh16"]
 streams_count = 1
@@ -373,7 +373,7 @@ unique_name_in_owner = true
 position = Vector2(0, -16)
 rotation = 3.14159
 scale = Vector2(1, -1)
-texture = ExtResource("1_8w7mu")
+texture = ExtResource("2_c2n0w")
 hframes = 8
 vframes = 9
 frame = 48
