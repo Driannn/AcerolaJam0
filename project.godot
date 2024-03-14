@@ -21,7 +21,7 @@ boot_splash/minimum_display_time=3000
 [autoload]
 
 MusicController="*res://Scenes/Autoloads/music_controller.tscn"
-GlobaLogic="*res://Scenes/Autoloads/GlobalLogic.gd"
+AudioManager="*res://Scenes/Autoloads/audio_manager.tscn"
 
 [display]
 

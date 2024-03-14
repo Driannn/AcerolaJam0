@@ -19,6 +19,7 @@ func _set_health(new_health):
 	if health <= 0:
 		#queue_free()
 		if destroy_on_zero_health:
+			AudioManager.play_enemy_die_sound()
 			#Destroy parent game object
 			destroy_node.queue_free()
 	

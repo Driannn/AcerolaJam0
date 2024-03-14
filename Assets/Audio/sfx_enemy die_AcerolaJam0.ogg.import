@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cux0bk6vr5d4a"
+path="res://.godot/imported/sfx_enemy die_AcerolaJam0.ogg-7ab0461ccc61d079899ee8bfd32f5c5e.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/sfx_enemy die_AcerolaJam0.ogg"
+dest_files=["res://.godot/imported/sfx_enemy die_AcerolaJam0.ogg-7ab0461ccc61d079899ee8bfd32f5c5e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

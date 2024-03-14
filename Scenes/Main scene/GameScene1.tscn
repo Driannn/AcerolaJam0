@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://23kxwe26rsys"]
+[gd_scene load_steps=41 format=3 uid="uid://23kxwe26rsys"]
 
 [ext_resource type="PackedScene" uid="uid://dyw6lbmwpmdb3" path="res://Scenes/Logic/game_manager.tscn" id="1_bsvju"]
 [ext_resource type="PackedScene" uid="uid://db4ivmgtxggnu" path="res://Scenes/TileMaps/my_tile_map1.tscn" id="2_fd7cf"]
@@ -35,6 +35,9 @@
 [ext_resource type="Texture2D" uid="uid://dsjimwyhychx5" path="res://Assets/Icons/switch_buttons_left_outline.png" id="31_ctcvl"]
 [ext_resource type="Texture2D" uid="uid://bcxccopcvvwp8" path="res://Assets/Icons/keyboard_x.png" id="32_6npf8"]
 [ext_resource type="Texture2D" uid="uid://y0dubtfschn4" path="res://Assets/Icons/mouse_left_outline.png" id="33_24835"]
+[ext_resource type="Texture2D" uid="uid://cv68r16exemex" path="res://Assets/Icons/playstation3_button_select.png" id="36_nl4rq"]
+[ext_resource type="Texture2D" uid="uid://nc8b8l6sg26c" path="res://Assets/Icons/keyboard_f5.png" id="37_20pur"]
+[ext_resource type="Texture2D" uid="uid://c6j5xulstgyxs" path="res://Assets/Icons/keyboard_r.png" id="38_yxw0v"]
 
 [sub_resource type="Environment" id="Environment_5iead"]
 background_mode = 3
@@ -366,3 +369,32 @@ texture = ExtResource("32_6npf8")
 position = Vector2(-1392, 608)
 scale = Vector2(0.122041, 0.122041)
 texture = ExtResource("33_24835")
+
+[node name="Restart" type="Control" parent="TextOnScreen"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Restart" type="Label" parent="TextOnScreen/Restart"]
+offset_left = 128.228
+offset_top = 752.0
+offset_right = 208.228
+offset_bottom = 773.0
+theme_override_fonts/font = ExtResource("11_sossw")
+text = "RESTART"
+
+[node name="Playstation3ButtonSelect" type="Sprite2D" parent="TextOnScreen/Restart"]
+position = Vector2(168.228, 776)
+scale = Vector2(0.12684, 0.12684)
+texture = ExtResource("36_nl4rq")
+
+[node name="KeyboardF5" type="Sprite2D" parent="TextOnScreen/Restart"]
+position = Vector2(136.228, 776)
+scale = Vector2(0.128569, 0.128569)
+texture = ExtResource("37_20pur")
+
+[node name="KeyboardR" type="Sprite2D" parent="TextOnScreen/Restart"]
+position = Vector2(152.228, 776)
+scale = Vector2(0.125835, 0.125835)
+texture = ExtResource("38_yxw0v")
