@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bubsfc3tvkdsb"]
+[gd_scene load_steps=30 format=3 uid="uid://bubsfc3tvkdsb"]
 
 [ext_resource type="Texture2D" uid="uid://clh5e1uwbbtv0" path="res://Assets/Character/AnimationSheet_Character_byPenzilla.png" id="1_8w7mu"]
 [ext_resource type="Script" path="res://Scenes/Player/my_player.gd" id="1_ggs3h"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://mni3i2jaf0s" path="res://Assets/Icons/steamdeck_dpad.png" id="5_y2f5t"]
 [ext_resource type="AudioStream" uid="uid://c2jgi3jacaahp" path="res://Assets/Audio/sfx_jump_AcerolaJam0.wav" id="9_gw0eq"]
 [ext_resource type="AudioStream" uid="uid://bgltpx4dym85l" path="res://Assets/Audio/AcerolaJam0_sfx_hurt.wav" id="9_qksvi"]
+[ext_resource type="AudioStream" uid="uid://d2ynxudbmr028" path="res://Assets/Audio/sfx_dash_AcerolaJam0.wav" id="11_4jtym"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_meodc"]
 radius = 5.0
@@ -287,6 +288,12 @@ metadata/_snap_count = 20
 offsets = PackedFloat32Array(0.392308, 0.984615)
 colors = PackedColorArray(0, 0.128971, 0.128971, 1, 0, 0.129412, 0.129412, 0)
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_lg1xb"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("11_4jtym")
+stream_0/weight = 1.0
+
 [node name="MyPlayer" type="CharacterBody2D"]
 script = ExtResource("1_ggs3h")
 h_speed = 150.0
@@ -444,6 +451,11 @@ stream = ExtResource("9_qksvi")
 volume_db = -12.0
 pitch_scale = 0.36
 bus = &"Player"
+
+[node name="sfx_dash" type="AudioStreamPlayer2D" parent="Audio"]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamRandomizer_lg1xb")
+pitch_scale = 0.8
 
 [connection signal="area_entered" from="Trigger" to="." method="_on_trigger_area_entered"]
 [connection signal="timeout" from="Camera2D/HeathBar/Timer" to="Camera2D/HeathBar" method="_on_timer_timeout"]

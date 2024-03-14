@@ -51,6 +51,9 @@ extends CharacterBody2D
 @onready var dash_cooldown = %DashCooldown
 ##Reference to GameManager Node
 @onready var game_manager = $"../../Manager Container/GameManager"
+##Reference to dash sound
+@onready var sfx_dash = %sfx_dash
+
 
 
 #endregion
@@ -101,6 +104,7 @@ func move_on_x(delta : float) -> void:
 	var horizontal_direction = get_movement_input()
 	
 	if dashing:
+		sfx_dash.play()
 		if !sprite.flip_h:
 			velocity.x = dash_speed * -1 * delta * 50
 		else:
