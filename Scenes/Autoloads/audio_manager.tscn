@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bb72lwj1tulk"]
+
+[ext_resource type="Script" path="res://AudioManager.gd" id="1_7excy"]
+[ext_resource type="AudioStream" uid="uid://cux0bk6vr5d4a" path="res://Assets/Audio/Enemy/sfx_enemy die_AcerolaJam0.ogg" id="2_67ani"]
+[ext_resource type="AudioStream" uid="uid://lxrx7xc17l2e" path="res://Assets/Audio/Portal/sfx_portal activated_AcerolaJam0-001.ogg" id="3_v5c2y"]
+
+[node name="AudioManager" type="Node2D"]
+script = ExtResource("1_7excy")
+
+[node name="EnemyDie" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_67ani")
+volume_db = 3.114
+bus = &"Enemies"
+
+[node name="SceneTransition" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_v5c2y")
+volume_db = 1.245
+pitch_scale = 0.56

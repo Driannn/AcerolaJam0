@@ -8,6 +8,12 @@ extends CharacterBody2D
 @export_category("Player")
 ##Player speed on X
 @export var h_speed : float = 300.0
+##Dash speed
+@export var dash_speed := 900.0
+##Define if it is dashing or not
+@export var dashing := false
+##Limit when the player can dash
+@export var can_dash := true
 ##Jump forceof the player
 @export var jump_force : float = 200.0
 ##Determines the maximun of jumps the player can do
@@ -20,6 +26,10 @@ extends CharacterBody2D
 @export var gravity_acceleration : float = 500.0
 ##Gravity max speed
 @export var gravity_max_speed : float = 1000.0
+
+@export_category("VFX")
+##Trail lenght
+@export var trail_lenght := 12
 #endregion
 
 #region @onready variables
@@ -31,14 +41,31 @@ extends CharacterBody2D
 @onready var sword = %WeaponSword
 ##Reference to health bar
 @onready var health_bar = %HeathBar
-##Timer for hurt animation
+##Reference to Timer for hurt animation
 @onready var hurt_anim = $HurtAnim
+##Reference to trail
+@onready var my_trails = %MyTrails
+##Reference to Dash timer
+@onready var dash_durantion = %DashDurantion
+##Dash cooldown
+@onready var dash_cooldown = %DashCooldown
+##Reference to GameManager Node
+@onready var game_manager = $"../../Manager Container/GameManager"
+##Reference to dash sound
+@onready var sfx_dash = %sfx_dash
+##Reference to jump sound
+@onready var sfx_jump = %sfx_jump
+
+
+
 
 #endregion
 
 #region normal variables
 ##Count amount of jumps, for double jump feature
 var jump_count : int = 0
+##Is player dead
+var is_dead := false
 #endregion
 
 #NATIVE GODOT FUNCTIONS
@@ -51,29 +78,44 @@ func _physics_process(delta):
 	#PLAYER MOVEMENT FUNCTIONS
 	
 	apply_gravity(delta)
-	#print("Current falling speed is: ", velocity.y * -1)
-	#print("Max gravity speed is: ",  gravity_max_speed)
-	move_on_x(delta)
-	#print("Velocity on X is: ", get_movement_input())
-	jump()
-	#print("Jump count is: ", jump_count)
+	 
+	if !is_dead:
+		move_on_x(delta)
+		jump()
+		#AMINATION LOGIC
+		update_animations(get_movement_input())
 	
+	dead_no_slippery(delta)
 	#Moves the body based on player's velocity
 	move_and_slide()
 	
-	#AMINATION LOGIC
-	update_animations(get_movement_input())
 
 #MY FUNCTIONS
 
 ##Get players input
 func get_movement_input() -> float:
+	
+	if Input.is_action_just_pressed("dash") and can_dash:
+		dashing = true
+		can_dash = false
+		dash_durantion.start()
+		dash_cooldown.start()
 	return Input.get_axis("move_left", "move_right")
 
 ##Use players input and apply it to the X velocity
 func move_on_x(delta : float) -> void:
 	var horizontal_direction = get_movement_input()
-	velocity.x = h_speed * horizontal_direction * delta * 50
+	
+	if dashing:
+		sfx_dash.play()
+		if !sprite.flip_h:
+			velocity.x = dash_speed * -1 * delta * 50
+		else:
+			velocity.x = dash_speed * 1 * delta * 50
+		velocity.y = 0
+	else:
+		velocity.x = h_speed * horizontal_direction * delta * 50
+	
 	sprite_flip(horizontal_direction)
 
 ##Flip the sprite based on horizontal direction
@@ -81,14 +123,14 @@ func sprite_flip(horizontal_direction):
 	#If the player is moving
 	if horizontal_direction != 0:
 		#flip the sprite if the direction is left and go back to normal if direction is right
-		sprite.flip_h = horizontal_direction == -1
+		sprite.flip_h = horizontal_direction > 0
 		flip_sword()
 		
 func flip_sword():
 	if sprite.flip_h:
-		sword.scale.x = -1
-	else:
 		sword.scale.x = 1
+	else:
+		sword.scale.x = -1
 
 ##Apply force to the Y velocity if the player is not on the floor
 func apply_gravity(delta : float) -> void:
@@ -99,9 +141,12 @@ func apply_gravity(delta : float) -> void:
 
 ##Check if it is possible to jump and returns a bool, resent the jump count on floor
 func handle_jump() -> bool:
+	
+	
 	if is_on_floor():
 		jump_count = 0
 	if Input.is_action_just_pressed("jump") && jump_count < max_jumps:
+		sfx_jump.play()
 		return true
 	return false
 
@@ -120,7 +165,7 @@ func update_animations(horizontal_direction : float) -> void:
 	if is_on_floor():
 		if horizontal_direction == 0:
 			ap.play("idle")
-		else:
+		elif horizontal_direction != 0 or dashing:
 			ap.play("run")
 	elif velocity.y < 0:
 		ap.play("jump")
@@ -128,17 +173,48 @@ func update_animations(horizontal_direction : float) -> void:
 		ap.play("fall")
 
 func take_damage(amount: int) -> void:
-	ap.play("hurt")
-	ap.queue("idle")
-	hurt_anim.start()
+
+	if is_dead:
+		return
 	set_health(amount)
 	health -= amount
+	ap.play("hurt")
+	hurt_anim.start()
+
+	check_dead()
 	print("Player take damage. health: ", health)
+
+func check_dead():
+	if health <= 0:
+		is_dead = true
+		sword.visible = false
+		sword.queue_free()
+		ap.play("dead")
+
+
+func dead_no_slippery(_delta):
+	if is_dead:
+		velocity.x = 0
 
 func set_health(value):
 	health_bar.health -= value
 
+#SIGNALS
+#hurt animation timer
+#func _on_timer_timeout():
+	#update_animations(get_movement_input())
+	#pass # Replace with function body.
 
-func _on_timer_timeout():
-	update_animations(get_movement_input())
-	pass # Replace with function body.
+#stop dashing
+func _on_dash_durantion_timeout():
+	dashing = false
+
+
+func _on_dash_cooldown_timeout():
+	can_dash = true
+
+
+func _on_trigger_area_entered(area):
+	print_debug(area.name, "Portal Activado")
+	AudioManager.play_scene_transition()
+	game_manager.load_next_scene()

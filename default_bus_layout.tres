@@ -1,0 +1,77 @@
+[gd_resource type="AudioBusLayout" load_steps=6 format=3 uid="uid://c4qdnitp1nfca"]
+
+[sub_resource type="AudioEffectPhaser" id="AudioEffectPhaser_biish"]
+resource_name = "Phaser"
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_43546"]
+resource_name = "Reverb"
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_5rk3j"]
+resource_name = "Reverb"
+room_size = 0.22
+spread = 0.53
+hipass = 0.22
+wet = 0.21
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_ifw1w"]
+resource_name = "Reverb"
+room_size = 0.27
+hipass = 0.2
+wet = 0.1
+
+[sub_resource type="AudioEffectEQ" id="AudioEffectEQ_67q7p"]
+resource_name = "EQ"
+band_db/32_hz = -19.3
+band_db/100_hz = 14.6
+band_db/320_hz = 3.7
+band_db/1000_hz = -18.3
+band_db/3200_hz = -26.5
+band_db/10000_hz = -41.0
+
+[resource]
+bus/1/name = &"Music"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = -14.0622
+bus/1/send = &"Master"
+bus/1/effect/0/effect = SubResource("AudioEffectPhaser_biish")
+bus/1/effect/0/enabled = false
+bus/1/effect/1/effect = SubResource("AudioEffectReverb_43546")
+bus/1/effect/1/enabled = false
+bus/2/name = &"SFX"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = &"Master"
+bus/3/name = &"Player"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 2.05373
+bus/3/send = &"SFX"
+bus/3/effect/0/effect = SubResource("AudioEffectReverb_5rk3j")
+bus/3/effect/0/enabled = true
+bus/4/name = &"UI"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = -1.71701
+bus/4/send = &"SFX"
+bus/4/effect/0/effect = SubResource("AudioEffectReverb_ifw1w")
+bus/4/effect/0/enabled = true
+bus/5/name = &"Enemies"
+bus/5/solo = false
+bus/5/mute = false
+bus/5/bypass_fx = false
+bus/5/volume_db = -6.25101
+bus/5/send = &"SFX"
+bus/6/name = &"Portal"
+bus/6/solo = false
+bus/6/mute = false
+bus/6/bypass_fx = false
+bus/6/volume_db = 0.0
+bus/6/send = &"SFX"
+bus/6/effect/0/effect = SubResource("AudioEffectEQ_67q7p")
+bus/6/effect/0/enabled = true

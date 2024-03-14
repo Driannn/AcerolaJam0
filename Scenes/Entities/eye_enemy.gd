@@ -11,7 +11,7 @@ func _ready():
 
 func take_damage(amount: int) -> void:
 	ap.play("take_damage")
-	print("Enermy take damage")
+	print("Enermy take damage, health ", health)
 	ap.queue("idle")
 	set_health(amount)
 	

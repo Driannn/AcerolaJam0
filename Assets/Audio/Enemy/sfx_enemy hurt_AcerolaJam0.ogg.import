@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://7q0w2a50cbkt"
+path="res://.godot/imported/sfx_enemy hurt_AcerolaJam0.ogg-0d17ff7fdbc7d372c9b42811e63feb2e.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/Enemy/sfx_enemy hurt_AcerolaJam0.ogg"
+dest_files=["res://.godot/imported/sfx_enemy hurt_AcerolaJam0.ogg-0d17ff7fdbc7d372c9b42811e63feb2e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

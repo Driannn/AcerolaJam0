@@ -1,21 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://3rebuh30qoem"]
+[gd_scene load_steps=14 format=3 uid="uid://3rebuh30qoem"]
 
 [ext_resource type="Script" path="res://Scenes/Items/weapon_sword.gd" id="1_ex3v8"]
 [ext_resource type="Texture2D" uid="uid://bq3d5hoyv63xt" path="res://Assets/Items/Sword_01.png" id="1_p2esc"]
+[ext_resource type="AudioStream" uid="uid://dvn10asdtdjqa" path="res://Assets/Audio/Player/sfx_sword_AcerolaJam0.wav" id="2_hwx7g"]
 [ext_resource type="Script" path="res://Scenes/Items/SwordTrail.gd" id="4_dm5yi"]
 [ext_resource type="Script" path="res://Scenes/Items/SwordHitBox.gd" id="4_w7csv"]
-
-[sub_resource type="Curve" id="Curve_1h4us"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.577601, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_7mled"]
-offsets = PackedFloat32Array(0, 0.540773, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0)
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ydxh1"]
-radius = 2.06104
-height = 26.8995
 
 [sub_resource type="Animation" id="Animation_4qfoc"]
 length = 0.001
@@ -54,6 +43,30 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/Sprite2D/Node2D/MyTrails:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node2D/AudioStreamPlayer2D:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_dtlxl"]
@@ -95,10 +108,10 @@ tracks/0/path = NodePath("Node2D:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.15),
-"transitions": PackedFloat32Array(0.34151, 0.34151),
+"times": PackedFloat32Array(0, 0.025, 0.15),
+"transitions": PackedFloat32Array(1, 0.34151, 0.34151),
 "update": 0,
-"values": [-0.502655, 1.89194]
+"values": [-0.150098, -0.502655, 1.89194]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -124,6 +137,30 @@ tracks/2/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node2D/Sprite2D/Node2D/MyTrails:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Node2D/AudioStreamPlayer2D:playing")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cgnky"]
 _data = {
@@ -132,14 +169,45 @@ _data = {
 "slash": SubResource("Animation_qf01p")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ibs38"]
+random_pitch = 1.1
+streams_count = 1
+stream_0/stream = ExtResource("2_hwx7g")
+stream_0/weight = 1.0
+
+[sub_resource type="Curve" id="Curve_1h4us"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.577601, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_7mled"]
+offsets = PackedFloat32Array(0, 0.540773, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 1, 1, 1, 0, 1, 1, 0)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ydxh1"]
+radius = 2.06104
+height = 21.4755
+
 [node name="WeaponSword" type="Node2D"]
 script = ExtResource("1_ex3v8")
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(5, 8)
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D"]
+unique_name_in_owner = true
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_cgnky")
+}
+autoplay = "idle"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Node2D"]
+stream = SubResource("AudioStreamRandomizer_ibs38")
+bus = &"Player"
+
 [node name="Sprite2D" type="Sprite2D" parent="Node2D"]
 unique_name_in_owner = true
+modulate = Color(1.1, 1.1, 1.2, 1)
 position = Vector2(7, -8)
 texture = ExtResource("1_p2esc")
 
@@ -147,13 +215,15 @@ texture = ExtResource("1_p2esc")
 position = Vector2(4, -5)
 
 [node name="MyTrails" type="Line2D" parent="Node2D/Sprite2D/Node2D"]
+modulate = Color(1, 1, 1.2, 1)
 top_level = true
 z_index = -1
-width = 8.0
+points = PackedVector2Array(19, -9)
+width = 16.205
 width_curve = SubResource("Curve_1h4us")
 gradient = SubResource("Gradient_7mled")
 script = ExtResource("4_dm5yi")
-max_lenght = 7
+keep_drawning = true
 
 [node name="MyHitBox" type="Area2D" parent="Node2D/Sprite2D"]
 collision_layer = 0
@@ -161,14 +231,9 @@ collision_mask = 0
 script = ExtResource("4_w7csv")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Sprite2D/MyHitBox"]
-position = Vector2(2, -2)
+position = Vector2(1, -1)
 rotation = 0.708861
 shape = SubResource("CapsuleShape2D_ydxh1")
 disabled = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-unique_name_in_owner = true
-libraries = {
-"": SubResource("AnimationLibrary_cgnky")
-}
-autoplay = "idle"
+[node name="Node2D" type="Node2D" parent="Node2D"]

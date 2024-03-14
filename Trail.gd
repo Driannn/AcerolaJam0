@@ -8,6 +8,7 @@ var queue : Array
 ##Max lenght of the trail/queue
 @export var max_lenght : int = 10
 @export var position_offset : Vector2
+@export var keep_drawning : bool
 
 func _process(_delta):
 	#Testing, store mouse pos in a variable
@@ -24,8 +25,9 @@ func _process(_delta):
 	clear_points()
 	
 	#Draw the only points in the queue
-	for point in queue:
-		add_point(point)
+	if keep_drawning:
+		for point in queue:
+			add_point(point)
 
 func _get_position():
 	return get_global_mouse_position() + position_offset
