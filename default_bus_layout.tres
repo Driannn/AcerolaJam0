@@ -1,4 +1,4 @@
-[gd_resource type="AudioBusLayout" load_steps=5 format=3 uid="uid://c4qdnitp1nfca"]
+[gd_resource type="AudioBusLayout" load_steps=6 format=3 uid="uid://c4qdnitp1nfca"]
 
 [sub_resource type="AudioEffectPhaser" id="AudioEffectPhaser_biish"]
 resource_name = "Phaser"
@@ -18,6 +18,15 @@ resource_name = "Reverb"
 room_size = 0.27
 hipass = 0.2
 wet = 0.1
+
+[sub_resource type="AudioEffectEQ" id="AudioEffectEQ_67q7p"]
+resource_name = "EQ"
+band_db/32_hz = -19.3
+band_db/100_hz = 14.6
+band_db/320_hz = 3.7
+band_db/1000_hz = -18.3
+band_db/3200_hz = -26.5
+band_db/10000_hz = -41.0
 
 [resource]
 bus/1/name = &"Music"
@@ -58,3 +67,11 @@ bus/5/mute = false
 bus/5/bypass_fx = false
 bus/5/volume_db = -6.25101
 bus/5/send = &"SFX"
+bus/6/name = &"Portal"
+bus/6/solo = false
+bus/6/mute = false
+bus/6/bypass_fx = false
+bus/6/volume_db = 0.0
+bus/6/send = &"SFX"
+bus/6/effect/0/effect = SubResource("AudioEffectEQ_67q7p")
+bus/6/effect/0/enabled = true

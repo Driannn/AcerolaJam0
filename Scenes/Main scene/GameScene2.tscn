@@ -131,6 +131,7 @@ position = Vector2(-2162, 802)
 speed = 0.05
 
 [node name="EyeEnemy" parent="EntityContainer/Enemies/Path2D/PathFollow2D" instance=ExtResource("7_8pbnw")]
+health = 60
 
 [node name="Cameras" type="Node2D" parent="."]
 process_mode = 1

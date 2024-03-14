@@ -216,4 +216,5 @@ func _on_dash_cooldown_timeout():
 
 func _on_trigger_area_entered(area):
 	print_debug(area.name, "Portal Activado")
+	AudioManager.play_scene_transition()
 	game_manager.load_next_scene()
