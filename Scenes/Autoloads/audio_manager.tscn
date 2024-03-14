@@ -8,4 +8,5 @@ script = ExtResource("1_7excy")
 
 [node name="EnemyDie" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_67ani")
+volume_db = 3.114
 bus = &"Enemies"

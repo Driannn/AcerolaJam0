@@ -53,6 +53,9 @@ extends CharacterBody2D
 @onready var game_manager = $"../../Manager Container/GameManager"
 ##Reference to dash sound
 @onready var sfx_dash = %sfx_dash
+##Reference to jump sound
+@onready var sfx_jump = %sfx_jump
+
 
 
 
@@ -143,6 +146,7 @@ func handle_jump() -> bool:
 	if is_on_floor():
 		jump_count = 0
 	if Input.is_action_just_pressed("jump") && jump_count < max_jumps:
+		sfx_jump.play()
 		return true
 	return false
 

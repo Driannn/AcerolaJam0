@@ -278,8 +278,8 @@ bus = &"Enemies"
 
 [node name="EnemyIdle" type="AudioStreamPlayer2D" parent="Node2D"]
 stream = ExtResource("8_1kv0y")
-volume_db = 12.455
+volume_db = 16.814
 autoplay = true
 max_distance = 1000.0
-attenuation = 4.14106
+attenuation = 2.46229
 bus = &"Enemies"
