@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scenes/Items/weapon_sword.gd" id="1_ex3v8"]
 [ext_resource type="Texture2D" uid="uid://bq3d5hoyv63xt" path="res://Assets/Items/Sword_01.png" id="1_p2esc"]
-[ext_resource type="AudioStream" uid="uid://dvn10asdtdjqa" path="res://Assets/Audio/sfx_sword_AcerolaJam0.wav" id="2_tmwgk"]
+[ext_resource type="AudioStream" uid="uid://dvn10asdtdjqa" path="res://Assets/Audio/Player/sfx_sword_AcerolaJam0.wav" id="2_hwx7g"]
 [ext_resource type="Script" path="res://Scenes/Items/SwordTrail.gd" id="4_dm5yi"]
 [ext_resource type="Script" path="res://Scenes/Items/SwordHitBox.gd" id="4_w7csv"]
 
@@ -172,7 +172,7 @@ _data = {
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_ibs38"]
 random_pitch = 1.1
 streams_count = 1
-stream_0/stream = ExtResource("2_tmwgk")
+stream_0/stream = ExtResource("2_hwx7g")
 stream_0/weight = 1.0
 
 [sub_resource type="Curve" id="Curve_1h4us"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dlpfg8pvdrofg"
+path="res://.godot/imported/sfx_portal activated_AcerolaJam0.ogg-64b6a6ef71d6f85596aac9af8bd84a9e.oggvorbisstr"
+
+[deps]
+
+source_file="res://Assets/Audio/Portal/sfx_portal activated_AcerolaJam0.ogg"
+dest_files=["res://.godot/imported/sfx_portal activated_AcerolaJam0.ogg-64b6a6ef71d6f85596aac9af8bd84a9e.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

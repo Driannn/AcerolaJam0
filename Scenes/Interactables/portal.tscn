@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://cohaf6ch0vmw"]
 
 [ext_resource type="Texture2D" uid="uid://l14iwbkcmv7h" path="res://Assets/KenneyParticlePack/circle_01.png" id="1_yla2i"]
-[ext_resource type="AudioStream" uid="uid://cryeupujb4v16" path="res://Assets/Audio/sfx_portal idle_loop_AcerolaJam0.ogg" id="2_7pb6t"]
+[ext_resource type="AudioStream" uid="uid://cryeupujb4v16" path="res://Assets/Audio/Portal/sfx_portal idle_loop_AcerolaJam0.ogg" id="2_s02kj"]
 
 [sub_resource type="Animation" id="Animation_p63if"]
 length = 0.001
@@ -114,7 +114,7 @@ monitoring = false
 shape = SubResource("CircleShape2D_dj7ob")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("2_7pb6t")
+stream = ExtResource("2_s02kj")
 volume_db = 3.114
 autoplay = true
 max_distance = 400.0

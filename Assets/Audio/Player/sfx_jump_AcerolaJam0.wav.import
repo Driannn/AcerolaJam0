@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://c2jgi3jacaahp"
-path="res://.godot/imported/sfx_jump_AcerolaJam0.wav-77ed846c4162a80df4778817984ddc24.sample"
+path="res://.godot/imported/sfx_jump_AcerolaJam0.wav-5f1793108dcb6e42cc8b1d33d89e6266.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/sfx_jump_AcerolaJam0.wav"
-dest_files=["res://.godot/imported/sfx_jump_AcerolaJam0.wav-77ed846c4162a80df4778817984ddc24.sample"]
+source_file="res://Assets/Audio/Player/sfx_jump_AcerolaJam0.wav"
+dest_files=["res://.godot/imported/sfx_jump_AcerolaJam0.wav-5f1793108dcb6e42cc8b1d33d89e6266.sample"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bgltpx4dym85l"
-path="res://.godot/imported/AcerolaJam0_sfx_hurt.wav-e8d3336a6246b3f07c87c4d4e22fa5ef.sample"
+path="res://.godot/imported/AcerolaJam0_sfx_hurt.wav-564fbd7d8143a1f1782f374ae0ea9e86.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/AcerolaJam0_sfx_hurt.wav"
-dest_files=["res://.godot/imported/AcerolaJam0_sfx_hurt.wav-e8d3336a6246b3f07c87c4d4e22fa5ef.sample"]
+source_file="res://Assets/Audio/Player/AcerolaJam0_sfx_hurt.wav"
+dest_files=["res://.godot/imported/AcerolaJam0_sfx_hurt.wav-564fbd7d8143a1f1782f374ae0ea9e86.sample"]
 
 [params]
 

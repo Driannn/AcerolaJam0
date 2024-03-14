@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dvn10asdtdjqa"
-path="res://.godot/imported/sfx_sword_AcerolaJam0.wav-c15fb0c9e3ff883422e01c82a4593964.sample"
+path="res://.godot/imported/sfx_sword_AcerolaJam0.wav-99960d45b136721c3824d57778b4370c.sample"
 
 [deps]
 
-source_file="res://Assets/Audio/sfx_sword_AcerolaJam0.wav"
-dest_files=["res://.godot/imported/sfx_sword_AcerolaJam0.wav-c15fb0c9e3ff883422e01c82a4593964.sample"]
+source_file="res://Assets/Audio/Player/sfx_sword_AcerolaJam0.wav"
+dest_files=["res://.godot/imported/sfx_sword_AcerolaJam0.wav-99960d45b136721c3824d57778b4370c.sample"]
 
 [params]
 
