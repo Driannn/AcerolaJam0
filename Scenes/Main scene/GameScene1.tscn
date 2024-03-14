@@ -98,7 +98,6 @@ process_mode = 1
 [node name="MyPlayer" parent="EntityContainer" instance=ExtResource("3_n2uhn")]
 unique_name_in_owner = true
 process_mode = 1
-position = Vector2(-2200, 496)
 
 [node name="CPUParticles2D" parent="EntityContainer/MyPlayer" instance=ExtResource("4_yglou")]
 process_mode = 3
@@ -126,7 +125,7 @@ speed = 0.05
 process_mode = 1
 
 [node name="OnPlayerCamera" type="Node2D" parent="Cameras"]
-position = Vector2(-2193.96, 464)
+position = Vector2(6.035, -32)
 script = ExtResource("7_ihqu1")
 priority_override = false
 priority = 5

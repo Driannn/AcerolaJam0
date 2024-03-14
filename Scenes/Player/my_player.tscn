@@ -529,7 +529,8 @@ bus = &"Player"
 
 [node name="sfx_footsteps" type="AudioStreamPlayer2D" parent="Audio"]
 stream = SubResource("AudioStreamRandomizer_fcw7y")
-volume_db = -5.168
+volume_db = -5.0
+bus = &"Player"
 
 [connection signal="area_entered" from="Trigger" to="." method="_on_trigger_area_entered"]
 [connection signal="timeout" from="Camera2D/HeathBar/Timer" to="Camera2D/HeathBar" method="_on_timer_timeout"]

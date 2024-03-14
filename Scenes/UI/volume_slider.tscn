@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://cu156vjb5efak"]
+
+[ext_resource type="Script" path="res://Scenes/UI/volume_slider.gd" id="1_u0jqq"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_muqtb"]
+
+[sub_resource type="ImageTexture" id="ImageTexture_7qwiu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_s6jhu"]
+bg_color = Color(0, 0.564706, 0.560784, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[node name="VolumeSlider" type="HSlider"]
+offset_right = 132.0
+offset_bottom = 45.0
+theme_override_icons/grabber = SubResource("ImageTexture_muqtb")
+theme_override_icons/grabber_highlight = SubResource("ImageTexture_7qwiu")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_s6jhu")
+max_value = 1.0
+step = 0.001
+value = 0.5
+script = ExtResource("1_u0jqq")

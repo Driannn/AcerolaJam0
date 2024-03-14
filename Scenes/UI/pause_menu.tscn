@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://m5qqeskwgghk"]
+[gd_scene load_steps=36 format=3 uid="uid://m5qqeskwgghk"]
 
 [ext_resource type="Script" path="res://Scenes/UI/pause_menu.gd" id="1_63ibb"]
 [ext_resource type="FontFile" uid="uid://dl8ifxf7qv5ji" path="res://Assets/Fonts/Montserrat-Bold.otf" id="1_fvnia"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://bxps10jd0cvpu" path="res://Assets/Icons/xbox_rt.png" id="22_7hv88"]
 [ext_resource type="Texture2D" uid="uid://lfjhb51kkdrw" path="res://Assets/Icons/xbox_button_start.png" id="27_fqbrl"]
 [ext_resource type="Texture2D" uid="uid://detfy8k5xkoxq" path="res://Assets/Icons/keyboard_p.png" id="27_xf8ub"]
+[ext_resource type="PackedScene" uid="uid://cu156vjb5efak" path="res://Scenes/UI/volume_slider.tscn" id="29_slar6"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jh2i8"]
 bg_color = Color(0, 0, 0, 0.917647)
@@ -72,6 +73,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 40.0
+offset_right = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_63ibb")
@@ -81,10 +84,10 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -37.0
-offset_top = -28.0
-offset_right = 80.0
-offset_bottom = 53.0
+offset_left = -52.0
+offset_top = -44.0
+offset_right = 65.0
+offset_bottom = 37.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_jh2i8")
@@ -299,9 +302,9 @@ anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
 offset_left = 32.0
-offset_top = -111.0
+offset_top = -127.0
 offset_right = 150.0
-offset_bottom = 53.0
+offset_bottom = 37.0
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxLine_ee35v")
 
@@ -318,11 +321,11 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 49.0
-offset_bottom = -3.0
+offset_top = 51.0
+offset_bottom = 74.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/separation = 25
+theme_override_constants/separation = 5
 
 [node name="Resume" type="Button" parent="Panel/VBoxContainer"]
 layout_mode = 2
@@ -350,6 +353,43 @@ theme_override_fonts/font = ExtResource("1_fvnia")
 theme_override_styles/normal = SubResource("StyleBoxFlat_wy4fg")
 theme_override_styles/hover = SubResource("StyleBoxFlat_u83tw")
 text = "Exit"
+
+[node name="SEPARATOR" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_fvnia")
+text = "
+"
+horizontal_alignment = 1
+
+[node name="MasterLabel" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_fvnia")
+text = "MASTER VOLUME"
+horizontal_alignment = 1
+
+[node name="Master" parent="Panel/VBoxContainer" instance=ExtResource("29_slar6")]
+layout_mode = 2
+bus_name = "Master"
+
+[node name="MusicLabel" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_fvnia")
+text = "MUSIC VOLUME"
+horizontal_alignment = 1
+
+[node name="Music" parent="Panel/VBoxContainer" instance=ExtResource("29_slar6")]
+layout_mode = 2
+bus_name = "Music"
+
+[node name="SfxLabel" type="Label" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_fvnia")
+text = "SFX VOLUME"
+horizontal_alignment = 1
+
+[node name="Sfx" parent="Panel/VBoxContainer" instance=ExtResource("29_slar6")]
+layout_mode = 2
+bus_name = "SFX"
 
 [connection signal="pressed" from="Panel/VBoxContainer/Resume" to="." method="_on_reusme_pressed"]
 [connection signal="pressed" from="Panel/VBoxContainer/Exit" to="." method="_on_exit_pressed"]
