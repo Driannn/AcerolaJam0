@@ -63,7 +63,7 @@ func _input(event : InputEvent):
 
 ##restart on R
 func restart_scene():
-	if Input.is_action_just_pressed("restart"):
+	if Input.is_action_just_pressed("restart") and !game_paused:
 		get_tree().reload_current_scene()
 
 func load_next_scene():

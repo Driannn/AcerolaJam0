@@ -27,7 +27,7 @@ AudioManager="*res://Scenes/Autoloads/audio_manager.tscn"
 
 window/size/viewport_width=640
 window/size/viewport_height=360
-window/size/mode=2
+window/size/mode=4
 window/stretch/mode="canvas_items"
 window/size/always_on_top.editor=false
 
